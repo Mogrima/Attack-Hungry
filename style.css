@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#canvas1 {
+    border: 5px solid #00008b;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* оставлен желтый цвет фона для отладки */
+    /* background: #f39f18; */
+    background: #050219;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#layer1, #layer2,
+#player, #enemy1,
+#enemy2, #enemy3, #enemy4 {
+    display: none;
+}
