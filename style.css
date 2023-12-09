@@ -19,6 +19,7 @@
 
 #layer1, #layer2,
 #player, #enemy1,
-#enemy2, #enemy3, #enemy4 {
+#enemy2, #enemy3, #enemy4,
+#projectiles {
     display: none;
 }

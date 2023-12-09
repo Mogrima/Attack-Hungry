@@ -49,9 +49,8 @@ export class Player {
         // hitbox player
         context.strokeStyle = "yellow";
         if (this.game.debug) context.strokeRect(this.x, this.y, this.width, this.height);
-        context.drawImage(this.image, this.frameX * this.sWidth, this.frameY * this.sHeight, this.sWidth, this.sHeight, this.x, this.y, this.dWidth, this.dHeight);
-
         this.projectiles.forEach(pr => { pr.draw(context); });
+        context.drawImage(this.image, this.frameX * this.sWidth, this.frameY * this.sHeight, this.sWidth, this.sHeight, this.x, this.y, this.dWidth, this.dHeight);
 
     }
 
