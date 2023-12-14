@@ -8,7 +8,7 @@ export class Spaceship3 extends Enemy {
         this.x = Math.random() * (this.game.width * 0.95 - this.width);
         this.image = document.getElementById('enemy3');
 
-        this.lives = 10;
+        this.lives = 3;
         this.score = this.lives;
         this.maxFrame = 6;
     }
