@@ -4,8 +4,8 @@ export class Particle {
         this.x = x;
         this.y = y;
         this.image = document.getElementById('particle');
-        this.frameX = Math.floor(Math.random() * 5);
-        this.frameY = Math.floor(Math.random() * 5);
+        this.frameX = Math.floor(Math.random() * 8);
+        this.frameY = Math.floor(Math.random() * 6);
         this.spriteSize = 32;
         this.sizeModifer = (Math.random() * 0.5 + 0.5).toFixed(1);
         this.size = this.spriteSize * this.sizeModifer;
