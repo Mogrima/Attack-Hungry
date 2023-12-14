@@ -23,6 +23,12 @@ export class Game {
         this.maxAmmo = 50;
         this.ammoTimer = 0;
 
+        this.hungry = 0;
+
+        this.hungryInterval = 1000;
+        this.maxHungry = 50;
+        this.hungryTimer = 0;
+
         this.ui = new UI(this);
 
         this.enemies = [];
@@ -58,6 +64,13 @@ export class Game {
             this.ammoTimer = 0;
         } else {
             this.ammoTimer += deltaTime;
+        }
+
+        if (this.hungryTimer > this.hungryInterval) {
+            if (this.hungry < this.maxHungry) this.hungry++;
+            this.hungryTimer = 0;
+        } else {
+            this.hungryTimer += deltaTime;
         }
 
         this.particles.forEach(particle => particle.update());
