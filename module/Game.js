@@ -5,6 +5,7 @@ import {Spaceship1} from './Enemies/Spaceship1.js';
 import {Spaceship2} from './Enemies/Spaceship2.js';
 import {Spaceship3} from './Enemies/Spaceship3.js';
 import {Spaceship4} from './Enemies/Spaceship4.js';
+import {Particle} from './Particle.js';
 import {Background} from '../UI/Background.js';
 
 export class Game {
@@ -39,6 +40,8 @@ export class Game {
 
         this.debug = true;
 
+        this.particles = [];
+
         this.direction = [];
         
     }
@@ -56,6 +59,11 @@ export class Game {
         } else {
             this.ammoTimer += deltaTime;
         }
+
+        this.particles.forEach(particle => particle.update());
+        this.particles = this.particles.filter(particle => !particle.markedForDeletion);
+        
+
         this.enemies.forEach(enemy => {
             
             enemy.update();
@@ -63,6 +71,9 @@ export class Game {
             if (this.checkCollision(this.player, enemy)) {
                 // если столкновение произошло, помечаем врага как удаленного
                 enemy.markedForDeletion = true;
+                for(let i = 0; i < 10; i++) {
+                    this.particles.push(new Particle(this, enemy.x + enemy.width * 0.5, enemy.y + enemy.height * 0.5));
+                }  
             }
             // для всех активных пуль (projectiles) также проверим условие столкновения
             // пули с врагом. 
@@ -70,9 +81,13 @@ export class Game {
                 if (this.checkCollision(projectile, enemy)) {
                     enemy.lives--; // уменьшаем жизни врага на единицу
                     // если столкновение произошло, помечаем снаряд как удаленный
+                    this.particles.push(new Particle(this, enemy.x + enemy.width * 0.5, enemy.y + enemy.height * 0.5));
                     projectile.markedForDeletion = true;
                     if (enemy.lives <= 0) {        
-                        enemy.markedForDeletion = true; // удаляем врага        
+                        enemy.markedForDeletion = true; // удаляем врага
+                        for(let i = 0; i < 10; i++) {
+                            this.particles.push(new Particle(this, enemy.x + enemy.width * 0.5, enemy.y + enemy.height * 0.5));
+                        }          
                         if (!this.gameOver) this.score += enemy.score; // увеличиваем количество очков главного игрока       
                         if (this.isWin()) this.gameOver = true;  // проверяем условие победы
                     }
@@ -113,6 +128,7 @@ export class Game {
     draw(context) {
         this.background.draw(context);
         this.ui.draw(context);
+        this.particles.forEach(particle => particle.draw(context));
         context.fillStyle = "#660066";
         this.player.draw(context);
         this.enemies.forEach(enemy => enemy.draw(context));
