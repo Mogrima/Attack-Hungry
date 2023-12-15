@@ -141,9 +141,8 @@ export class Game {
     draw(context) {
         this.background.draw(context);
         this.ui.draw(context);
-        this.particles.forEach(particle => particle.draw(context));
-        context.fillStyle = "#660066";
         this.player.draw(context);
+        this.particles.forEach(particle => particle.draw(context));
         this.enemies.forEach(enemy => enemy.draw(context));
 
     }
