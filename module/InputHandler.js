@@ -8,7 +8,7 @@ export class InputHandler {
                 this.game.direction.push(e.key);
 
                 if((this.game.direction.lastIndexOf('ArrowLeft') === this.game.direction.length - 1) && (this.game.direction.length > 0)) {
-                    this.game.player.frameY = 4;
+                    this.game.player.frameY = 1;
                     
                 }  else {
                     this.game.player.frameY = 0;

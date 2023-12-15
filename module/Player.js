@@ -3,8 +3,8 @@ import {Projectile} from './Projectile.js';
 export class Player {
     constructor(game) {
         this.game = game;
-        this.width = 100;
-        this.height = 100;
+        this.width = 32 * 3;
+        this.height = 18 * 3;
         this.x = game.width / 2 - (this.width / 2);
         this.y = game.height - this.height;
         this.speedX = 0;
@@ -15,9 +15,9 @@ export class Player {
         // image and animation player
         this.image = document.getElementById('player');
         this.sWidth = 32;
-        this.sHeight = 32;
-        this.dWidth = 100;
-        this.dHeight = 100;
+        this.sHeight = 18;
+        this.dWidth = 32 * 3;
+        this.dHeight = 18 * 3;
         this.frameX = 0;
         this.frameY = 0;
         this.maxFrame = 7;
