@@ -49,6 +49,11 @@ export class Particle {
         }
     }
     draw(context) {
-        context.drawImage(this.image, this.frameX * this.spriteSize, this.frameY * this.spriteSize, this.spriteSize, this.spriteSize, this.x, this.y, this.size, this.size);
+        context.save();
+        context.translate(this.x, this.y);
+        context.rotate(this.angle);
+        context.drawImage(this.image, this.frameX * this.spriteSize, this.frameY * this.spriteSize, 
+            this.spriteSize, this.spriteSize, this.size * -0.5, this.size * -0.5, this.size, this.size);
+        context.restore();
     }
 }
