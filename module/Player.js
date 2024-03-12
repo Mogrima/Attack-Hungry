@@ -3,21 +3,19 @@ import {Projectile} from './Projectile.js';
 export class Player {
     constructor(game) {
         this.game = game;
-        this.width = 32 * 3;
-        this.height = 18 * 3;
-        this.x = game.width / 2 - (this.width / 2);
-        this.y = game.height - this.height;
+        this.image = document.getElementById('player');
+        this.spriteWidth = 32;
+        this.spriteHeight = 18;
+        this.sizeModifier = 3;
+        this.width = this.spriteWidth * this.sizeModifier;
+        this.height = this.spriteHeight * this.sizeModifier;
+        this.x = this.game.width * 0.5 - (this.width * 0.5);
+        this.y = this.game.height - this.height;
         this.speedX = 0;
         this.maxSpeed = 10;
 
         this.projectiles = [];
 
-        // image and animation player
-        this.image = document.getElementById('player');
-        this.sWidth = 32;
-        this.sHeight = 18;
-        this.dWidth = 32 * 3;
-        this.dHeight = 18 * 3;
         this.frameX = 0;
         this.frameY = 0;
         this.maxFrame = 7;
@@ -50,7 +48,10 @@ export class Player {
         context.strokeStyle = "yellow";
         if (this.game.debug) context.strokeRect(this.x, this.y, this.width, this.height);
         this.projectiles.forEach(pr => { pr.draw(context); });
-        context.drawImage(this.image, this.frameX * this.sWidth, this.frameY * this.sHeight, this.sWidth, this.sHeight, this.x, this.y, this.dWidth, this.dHeight);
+        context.drawImage(this.image,
+            this.frameX * this.spriteWidth, this.frameY * this.spriteHeight,
+            this.spriteWidth, this.spriteHeight, this.x, this.y,
+            this.width, this.height);
 
     }
 
