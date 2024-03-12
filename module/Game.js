@@ -49,10 +49,15 @@ export class Game {
         this.particles = [];
 
         this.direction = [];
+
+        this.spriteUpdate = false;
+        this.spriteTimer = 0;
+        this.spriteInterval = 150;
         
     }
 
     update(deltaTime) {
+        this.handleSpriteTimer(deltaTime);
         if (!this.gameOver) this.gameTime += deltaTime;
         if (this.gameTime > this.timeLimit) this.gameOver = true;
 
@@ -115,6 +120,16 @@ export class Game {
             this.enemyTimer = 0;
         } else {
             this.enemyTimer += deltaTime;
+        }
+    }
+
+    handleSpriteTimer(deltaTime) {
+        if (this.spriteTimer < this.spriteInterval) {
+            this.spriteTimer += deltaTime;
+            this.spriteUpdate = false;
+        } else {
+            this.spriteUpdate = true;
+            this.spriteTimer = 0;
         }
     }
 
