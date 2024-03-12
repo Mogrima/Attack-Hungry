@@ -5,7 +5,6 @@ import {Spaceship1} from './Enemies/Spaceship1.js';
 import {Spaceship2} from './Enemies/Spaceship2.js';
 import {Spaceship3} from './Enemies/Spaceship3.js';
 import {Spaceship4} from './Enemies/Spaceship4.js';
-import {Particle} from './Particle.js';
 import {Background} from '../UI/Background.js';
 
 export class Game {
@@ -83,34 +82,7 @@ export class Game {
         
 
         this.enemies.forEach(enemy => {
-            
             enemy.update();
-            // Проверим, не столкнолся ли враг с главным игроком (player)
-            if (this.checkCollision(this.player, enemy)) {
-                // если столкновение произошло, помечаем врага как удаленного
-                enemy.markedForDeletion = true;
-                for(let i = 0; i < 10; i++) {
-                    this.particles.push(new Particle(this, enemy.x + enemy.width * 0.5, enemy.y + enemy.height * 0.5));
-                }  
-            }
-            // для всех активных пуль (projectiles) также проверим условие столкновения
-            // пули с врагом. 
-            this.player.projectiles.forEach(projectile => {
-                if (this.checkCollision(projectile, enemy)) {
-                    enemy.lives--; // уменьшаем жизни врага на единицу
-                    // если столкновение произошло, помечаем снаряд как удаленный
-                    this.particles.push(new Particle(this, enemy.x + enemy.width * 0.5, enemy.y + enemy.height * 0.5));
-                    projectile.markedForDeletion = true;
-                    if (enemy.lives <= 0) {        
-                        enemy.markedForDeletion = true; // удаляем врага
-                        for(let i = 0; i < 10; i++) {
-                            this.particles.push(new Particle(this, enemy.x + enemy.width * 0.5, enemy.y + enemy.height * 0.5));
-                        }          
-                        if (!this.gameOver) this.score += enemy.score; // увеличиваем количество очков главного игрока       
-                        if (this.isWin()) this.gameOver = true;  // проверяем условие победы
-                    }
-                }
-            });
         });
 
         this.enemies = this.enemies.filter(enemy => !enemy.markedForDeletion);
