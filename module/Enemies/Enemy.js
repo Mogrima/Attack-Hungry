@@ -10,6 +10,8 @@ export class Enemy {
         this.frameX = 0;
         this.frameY = 0;
         this.maxFrame = 5;
+
+        this.countParticles = 10;
     }
 
     update() {
@@ -34,7 +36,7 @@ export class Enemy {
                 projectile.markedForDeletion = true;
                 if (this.lives <= 0) {        
                     this.markedForDeletion = true;
-                    for(let i = 0; i < 10; i++) {
+                    for(let i = 0; i < this.countParticles; i++) {
                         this.game.particles.push(new Particle(this.game, this.x + this.width * 0.5,
                             this.y + this.height * 0.5));
                     }          
