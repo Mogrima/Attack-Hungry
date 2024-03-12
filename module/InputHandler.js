@@ -15,7 +15,7 @@ export class InputHandler {
                 }
             }
             else if (e.key === ' ') {
-                this.game.player.shootTop();
+                this.game.player.shoot();
             }
             else if (e.key === 'd') {
                 this.game.debug = !this.game.debug;

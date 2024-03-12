@@ -57,9 +57,10 @@ export class Player {
 
     }
 
-    shootTop() {
+    shoot() {
         if (this.game.ammo > 0) {
-            this.projectiles.push(new Projectile(this.game, this.x + this.width/2, this.y + 20));
+            this.projectiles.push(new Projectile(this.game,
+                this.x + this.width * 0.5, this.y + 20));
             this.game.ammo--;
         }
     }
