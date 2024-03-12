@@ -36,10 +36,12 @@ export class Player {
         this.projectiles = this.projectiles.filter(pr => !pr.markedForDeletion);
 
         // sprite animation
-        if(this.frameX < this.maxFrame) {
-            this.frameX++;
-        }  else {
-            this.frameX = 0;
+        if (this.game.spriteUpdate) {
+            if(this.frameX < this.maxFrame) {
+                this.frameX++;
+            }  else {
+                this.frameX = 0;
+            }
         }
     }
    
