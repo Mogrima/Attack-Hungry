@@ -35,7 +35,7 @@ export class Game {
         this.numberOfenemies = 50;
         this.createEnemyPool();
         this.enemyTimer = 0;
-        this.enemyInterval = 100;
+        this.enemyInterval = 1000;
         this.gameOver = false;
         this.score = 0;
         this.winningScore = 30;
