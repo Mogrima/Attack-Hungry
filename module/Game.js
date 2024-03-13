@@ -31,8 +31,11 @@ export class Game {
         this.ui = new UI(this);
 
         this.enemies = [];
+        this.enemyPool = [];
+        this.numberOfenemies = 50;
+        this.createEnemyPool();
         this.enemyTimer = 0;
-        this.enemyInterval = 1000;
+        this.enemyInterval = 100;
         this.gameOver = false;
         this.score = 0;
         this.winningScore = 30;
@@ -79,20 +82,13 @@ export class Game {
 
         this.particles.forEach(particle => particle.update());
         this.particles = this.particles.filter(particle => !particle.markedForDeletion);
-        
 
-        this.enemies.forEach(enemy => {
+        this.handleEnemies(deltaTime);
+
+        this.enemyPool.forEach(enemy => {
             enemy.update();
         });
-
-        this.enemies = this.enemies.filter(enemy => !enemy.markedForDeletion);
-
-        if (this.enemyTimer > this.enemyInterval && !this.gameOver) {
-            this.addEnemy();
-            this.enemyTimer = 0;
-        } else {
-            this.enemyTimer += deltaTime;
-        }
+        
     }
 
     handleSpriteTimer(deltaTime) {
@@ -105,12 +101,35 @@ export class Game {
         }
     }
 
-    addEnemy() {
-        const randomize = Math.random();
-        if (randomize < 0.3) this.enemies.push(new Spaceship1(this))
-        else if (randomize < 0.5 && randomize > 0.3) this.enemies.push(new Spaceship2(this))
-        else if (randomize < 0.8 && randomize > 0.5) this.enemies.push(new Spaceship3(this))
-        else this.enemies.push(new Spaceship4(this));
+    createEnemyPool() {
+        for (let i = 0; i < this.numberOfenemies; i++) {
+            const randomNumber = Math.random();
+            if (randomNumber < 0.3) {
+                this.enemyPool.push(new Spaceship1(this));
+            } else if (randomNumber < 0.5) {
+                this.enemyPool.push(new Spaceship2(this));
+            } else if (randomNumber < 0.8) {
+                this.enemyPool.push(new Spaceship3(this));
+            } else {
+                this.enemyPool.push(new Spaceship4(this));
+            }
+        }
+    }
+
+    getEnemy() {
+        for (let i = 0; i < this.enemyPool.length; i++) {
+            if (this.enemyPool[i].free) return this.enemyPool[i];
+        }
+    }
+
+    handleEnemies(deltaTime) {
+        if (this.enemyTimer > this.enemyInterval && !this.gameOver) {
+            this.enemyTimer = 0;
+            const enemy = this.getEnemy();
+            if (enemy) enemy.start();
+        } else {
+            this.enemyTimer += deltaTime;
+        }
     }
 
     checkCollision(rect1, rect2) {
@@ -130,7 +149,7 @@ export class Game {
         this.ui.draw(context);
         this.player.draw(context);
         this.particles.forEach(particle => particle.draw(context));
-        this.enemies.forEach(enemy => enemy.draw(context));
+        this.enemyPool.forEach(enemy => enemy.draw(context));
 
     }
 }

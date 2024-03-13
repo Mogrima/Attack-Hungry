@@ -5,10 +5,15 @@ export class Spaceship1 extends Enemy {
         super(game);
         this.width = 48;
         this.height = 29;
-        this.x = Math.random() * (this.game.width * 0.95 - this.width);
         this.image = document.getElementById('enemy1');
 
         this.lives = 1;
+        this.maxLives = this.lives;
         this.score = this.lives;
+    }
+
+    start() {
+        super.start();
+        this.lives = this.maxLives;
     }
 }
