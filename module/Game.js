@@ -30,7 +30,6 @@ export class Game {
 
         this.ui = new UI(this);
 
-        this.enemies = [];
         this.enemyPool = [];
         this.numberOfenemies = 50;
         this.createEnemyPool();
