@@ -35,7 +35,7 @@ export class Enemy {
 
             if (this.game.checkCollision(this.game.player, this)) {
                 this.reset();
-                for(let i = 0; i < 10; i++) {
+                for(let i = 0; i < this.countParticles; i++) {
                     const particle = this.game.getParticle();
                     if (particle) particle.start(this.x + this.width * 0.5, this.y + this.height * 0.5);
                 }
