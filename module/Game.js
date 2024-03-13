@@ -6,6 +6,7 @@ import {Spaceship2} from './Enemies/Spaceship2.js';
 import {Spaceship3} from './Enemies/Spaceship3.js';
 import {Spaceship4} from './Enemies/Spaceship4.js';
 import {Background} from '../UI/Background.js';
+import { Particle } from './Particle.js';
 
 export class Game {
     constructor(width, height) {
@@ -48,6 +49,9 @@ export class Game {
         this.debug = true;
 
         this.particles = [];
+        this.particlePool = [];
+        this.numberOfParticle = 50;
+        this.createParticlePool();
 
         this.direction = new Set();
 
@@ -79,8 +83,7 @@ export class Game {
             this.hungryTimer += deltaTime;
         }
 
-        this.particles.forEach(particle => particle.update());
-        this.particles = this.particles.filter(particle => !particle.markedForDeletion);
+        this.particlePool.forEach(particle => particle.update());
 
         this.handleEnemies(deltaTime);
 
@@ -131,6 +134,18 @@ export class Game {
         }
     }
 
+    createParticlePool() {
+        for (let i = 0; i < this.numberOfParticle; i++) {
+            this.particlePool.push(new Particle(this));
+        }
+    }
+
+    getParticle() {
+        for (let i = 0; i < this.particlePool.length; i++) {
+            if (this.particlePool[i].free) return this.particlePool[i];
+        }
+    }
+
     checkCollision(rect1, rect2) {
         return (
             rect1.x < rect2.x + rect2.width &&
@@ -147,7 +162,7 @@ export class Game {
         this.background.draw(context);
         this.ui.draw(context);
         this.player.draw(context);
-        this.particles.forEach(particle => particle.draw(context));
+        this.particlePool.forEach(particle => particle.draw(context));
         this.enemyPool.forEach(enemy => enemy.draw(context));
 
     }

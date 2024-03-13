@@ -1,5 +1,3 @@
-import { Particle } from "../Particle.js";
-
 export class Enemy {
     constructor(game) {
         this.game = game;
@@ -38,22 +36,22 @@ export class Enemy {
             if (this.game.checkCollision(this.game.player, this)) {
                 this.reset();
                 for(let i = 0; i < 10; i++) {
-                    this.game.particles.push(new Particle(this.game,
-                        this.x + this.width * 0.5, this.y + this.height * 0.5));
-                }  
+                    const particle = this.game.getParticle();
+                    if (particle) particle.start(this.x + this.width * 0.5, this.y + this.height * 0.5);
+                }
             }
 
             this.game.player.projectiles.forEach(projectile => {
                 if (this.game.checkCollision(projectile, this)) {
                     this.lives--;
-                    this.game.particles.push(new Particle(this.game, this.x + this.width * 0.5,
-                        this.y + this.height * 0.5));
+                    const particle = this.game.getParticle();
+                    if (particle) particle.start(this.x + this.width * 0.5, this.y + this.height * 0.5);
                     projectile.markedForDeletion = true;
                     if (this.lives <= 0) {        
                         this.reset();
                         for(let i = 0; i < this.countParticles; i++) {
-                            this.game.particles.push(new Particle(this.game, this.x + this.width * 0.5,
-                                this.y + this.height * 0.5));
+                            const particle = this.game.getParticle();
+                            if (particle) particle.start(this.x + this.width * 0.5, this.y + this.height * 0.5);
                         }          
                         if (!this.game.gameOver) this.game.score += this.score;
                         if (this.game.isWin()) this.game.gameOver = true;
