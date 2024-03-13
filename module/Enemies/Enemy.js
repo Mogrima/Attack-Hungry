@@ -61,10 +61,12 @@ export class Enemy {
                 }
             });
 
-            if(this.frameX < this.maxFrame) {
-                this.frameX++;
-            }  else {
-                this.frameX = 0;
+            if (this.game.spriteUpdate) {
+                if(this.frameX < this.maxFrame) {
+                    this.frameX++;
+                }  else {
+                    this.frameX = 0;
+                }
             }
         }
     }
