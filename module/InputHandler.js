@@ -4,10 +4,10 @@ export class InputHandler {
         window.addEventListener('keydown', (e) => {
             if (((e.key === 'ArrowRight') || (e.key === 'ArrowLeft'))) {
                 this.game.keys.add(e.key);
-                this.game.direction.length = 0;
-                this.game.direction.push(e.key);
+                this.game.direction.clear();
+                this.game.direction.add(e.key);
 
-                if((this.game.direction.lastIndexOf('ArrowLeft') === this.game.direction.length - 1) && (this.game.direction.length > 0)) {
+                if((this.game.direction.has('ArrowLeft'))) {
                     this.game.player.frameY = 1;
                     
                 }  else {

@@ -47,7 +47,7 @@ export class Game {
 
         this.particles = [];
 
-        this.direction = [];
+        this.direction = new Set();
 
         this.spriteUpdate = false;
         this.spriteTimer = 0;
