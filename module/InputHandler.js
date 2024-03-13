@@ -2,8 +2,8 @@ export class InputHandler {
     constructor(game) {
         this.game = game;
         window.addEventListener('keydown', (e) => {
-            if (((e.key === 'ArrowRight') || (e.key === 'ArrowLeft')) && this.game.keys.indexOf(e.key) === -1) {
-                this.game.keys.push(e.key);
+            if (((e.key === 'ArrowRight') || (e.key === 'ArrowLeft'))) {
+                this.game.keys.add(e.key);
                 this.game.direction.length = 0;
                 this.game.direction.push(e.key);
 
@@ -22,8 +22,8 @@ export class InputHandler {
             } 
         });
         window.addEventListener('keyup', (e) => {
-            if (this.game.keys.indexOf(e.key) > -1) {
-                this.game.keys.splice(this.game.keys.indexOf(e.key), 1);
+            if (this.game.keys.has(e.key)) {
+                this.game.keys.delete(e.key);
             }
         });
         

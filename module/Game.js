@@ -13,7 +13,7 @@ export class Game {
         this.height = height;
         this.player = new Player(this);
 
-        this.keys = [];
+        this.keys = new Set();
         this.input = new InputHandler(this);
 
         this.ammo = 20;

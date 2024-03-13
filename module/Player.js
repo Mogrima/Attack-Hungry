@@ -24,8 +24,8 @@ export class Player {
     update() {
         this.x += this.speedX;
 
-        if (this.game.keys.includes('ArrowLeft')) this.speedX = -this.maxSpeed;
-        else if (this.game.keys.includes('ArrowRight')) this.speedX = this.maxSpeed;
+        if (this.game.keys.has('ArrowLeft')) this.speedX = -this.maxSpeed;
+        else if (this.game.keys.has('ArrowRight')) this.speedX = this.maxSpeed;
         else this.speedX = 0;
 
         if (this.x > this.game.width - this.width * 0.5) this.x = this.game.
