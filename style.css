@@ -17,9 +17,6 @@
     font-family: 'Unica One', sans-serif;
 }
 
-#layer1, #layer2,
-#player, #enemy1,
-#enemy2, #enemy3, #enemy4,
-#projectiles, #particle {
+.assets {
     display: none;
 }
