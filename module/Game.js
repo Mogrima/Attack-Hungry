@@ -5,7 +5,6 @@ import {Spaceship1} from './Enemies/Spaceship1.js';
 import {Spaceship2} from './Enemies/Spaceship2.js';
 import {Spaceship3} from './Enemies/Spaceship3.js';
 import {Spaceship4} from './Enemies/Spaceship4.js';
-import {Background} from '../UI/Background.js';
 import { Particle } from './Particle.js';
 
 export class Game {
@@ -47,7 +46,6 @@ export class Game {
         this.timeLimit = 40 * 1000;
 
         this.speed = 13;
-        this.background = new Background(this);
 
         this.debug = true;
 
@@ -70,7 +68,6 @@ export class Game {
         if (this.gameTime > this.timeLimit) this.gameOver = true;
 
         this.player.update();
-        this.background.update();
 
         if (this.ammoTimer > this.ammoInterval) {
             if (this.ammo < this.maxAmmo) this.ammo++;
@@ -162,7 +159,6 @@ export class Game {
     }
 
     draw() {
-        this.background.draw();
         this.ui.draw();
         this.player.draw();
         this.particlePool.forEach(particle => particle.draw());
