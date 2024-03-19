@@ -74,14 +74,14 @@ export class Particle {
             }
         }
     }
-    draw(context) {
+    draw() {
         if (!this.free) {
-            context.save();
-            context.translate(this.x, this.y);
-            context.rotate(this.angle);
-            context.drawImage(this.image, this.frameX * this.spriteSize, this.frameY * this.spriteSize, 
+            this.game.ctx.save();
+            this.game.ctx.translate(this.x, this.y);
+            this.game.ctx.rotate(this.angle);
+            this.game.ctx.drawImage(this.image, this.frameX * this.spriteSize, this.frameY * this.spriteSize, 
                 this.spriteSize, this.spriteSize, this.size * -0.5, this.size * -0.5, this.size, this.size);
-            context.restore();
+            this.game.ctx.restore();
         }
     }
 }

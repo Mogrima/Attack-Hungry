@@ -13,7 +13,7 @@ export class Background {
         this.layers.forEach(layer => layer.update());
     }
 
-    draw(context) {
-        this.layers.forEach(layer => layer.draw(context));
+    draw() {
+        this.layers.forEach(layer => layer.draw());
     }
 }

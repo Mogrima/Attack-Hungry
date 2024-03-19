@@ -25,9 +25,9 @@ export class Projectile {
         }
     }
   
-    draw(context) {
-        // context.fillStyle = '#120a8f';
-        // context.fillRect(this.x, this.y, this.width, this.height);
-        context.drawImage(this.image, this.width * this.frameX, this.height * this.frameY, this.width, this.height, this.x, this.y, this.width, this.height);
+    draw() {
+        // this.game.ctx.fillStyle = '#120a8f';
+        // this.game.ctx.fillRect(this.x, this.y, this.width, this.height);
+        this.game.ctx.drawImage(this.image, this.width * this.frameX, this.height * this.frameY, this.width, this.height, this.x, this.y, this.width, this.height);
     }
 }

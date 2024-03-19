@@ -69,20 +69,20 @@ export class Enemy {
         }
     }
 
-    draw(context) {
+    draw() {
         if (!this.free) {
-            context.drawImage(this.image,
+            this.game.ctx.drawImage(this.image,
                 this.frameX * this.width, this.frameY * this.height,
                 this.width, this.height, this.x, this.y, this.width, this.height);
     
             // отобразим у каждого врага его жизни
             if(this.game.debug) {
-                context.save();
-                context.strokeRect(this.x, this.y, this.width, this.height);
-                context.fillStyle = 'white';
-                context.font = '20px Helvetica';
-                context.fillText(this.lives, this.x, this.y - 5);
-                context.restore();
+                this.game.ctx.save();
+                this.game.ctx.strokeRect(this.x, this.y, this.width, this.height);
+                this.game.ctx.fillStyle = 'white';
+                this.game.ctx.font = '20px Helvetica';
+                this.game.ctx.fillText(this.lives, this.x, this.y - 5);
+                this.game.ctx.restore();
             }
         }
     }

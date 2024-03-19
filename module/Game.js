@@ -161,12 +161,12 @@ export class Game {
         return this.score >= this.winningScore;
     }
 
-    draw(context) {
-        this.background.draw(context);
-        this.ui.draw(context);
-        this.player.draw(context);
-        this.particlePool.forEach(particle => particle.draw(context));
-        this.enemyPool.forEach(enemy => enemy.draw(context));
+    draw() {
+        this.background.draw();
+        this.ui.draw();
+        this.player.draw();
+        this.particlePool.forEach(particle => particle.draw());
+        this.enemyPool.forEach(enemy => enemy.draw());
 
     }
 }

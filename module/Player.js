@@ -45,12 +45,12 @@ export class Player {
         }
     }
    
-    draw(context) {
+    draw() {
         // hitbox player
-        context.strokeStyle = "yellow";
-        if (this.game.debug) context.strokeRect(this.x, this.y, this.width, this.height);
-        this.projectiles.forEach(pr => { pr.draw(context); });
-        context.drawImage(this.image,
+        this.game.ctx.strokeStyle = "yellow";
+        if (this.game.debug) this.game.ctx.strokeRect(this.x, this.y, this.width, this.height);
+        this.projectiles.forEach(pr => { pr.draw()});
+        this.game.ctx.drawImage(this.image,
             this.frameX * this.spriteWidth, this.frameY * this.spriteHeight,
             this.spriteWidth, this.spriteHeight, this.x, this.y,
             this.width, this.height);

@@ -22,15 +22,15 @@ export class Layer {
     }
 
     layerRotate() {
-        context.save();
-        context.translate(this.width / 2, this.height / 2);
-        context.rotate((180 * Math.PI) / 180);
-        context.translate(-this.width / 2, -this.height / 2);
-        context.restore();
+        this.game.ctx.save();
+        this.game.ctx.translate(this.width / 2, this.height / 2);
+        this.game.ctx.rotate((180 * Math.PI) / 180);
+        this.game.ctx.translate(-this.width / 2, -this.height / 2);
+        this.game.ctx.restore();
     }
 
-    draw(context) {
-        context.drawImage(this.image, this.x, this.y);
-        context.drawImage(this.rotateImage, this.x, this.y2);
+    draw() {
+        this.game.ctx.drawImage(this.image, this.x, this.y);
+        this.game.ctx.drawImage(this.rotateImage, this.x, this.y2);
     }
 }

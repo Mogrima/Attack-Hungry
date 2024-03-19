@@ -10,23 +10,23 @@ export class UI {
         this.hungryColor = '#f80000';
     }
 
-    draw(context) {
-        context.save();
-        context.fillStyle = this.color;
-        context.shadowOffsetX = 2;
-        context.shadowOffsetY = 2;
-        context.shadowColor = 'black';
-        context.font = this.fontSize + 'px ' + this.fontFamily;
+    draw() {
+        this.game.ctx.save();
+        this.game.ctx.fillStyle = this.color;
+        this.game.ctx.shadowOffsetX = 2;
+        this.game.ctx.shadowOffsetY = 2;
+        this.game.ctx.shadowColor = 'black';
+        this.game.ctx.font = this.fontSize + 'px ' + this.fontFamily;
         // очки
-        context.fillText('Score: ' + this.game.score, 20, 40);
+        this.game.ctx.fillText('Score: ' + this.game.score, 20, 40);
         //
-        context.fillText('Hungry: ', 20, 100);
+        this.game.ctx.fillText('Hungry: ', 20, 100);
          // таймер
          const formattedTime = (this.game.gameTime * 0.001).toFixed(1);
-         context.fillText('Timer: ' + formattedTime, 20, 160);
+         this.game.ctx.fillText('Timer: ' + formattedTime, 20, 160);
         // сообщения о победе или проигрыше
         if (this.game.gameOver) {
-            context.textAlign = 'center';
+            this.game.ctx.textAlign = 'center';
             let message1;
             let message2;
             if (this.game.isWin()) {
@@ -36,21 +36,21 @@ export class UI {
                 message1 = 'go all out!';
                 message2 = ' ⵢⵓⵔⴰ ⵉⵣⵍⴰⵏ ⵉⵏⴰⵎⵓⵔⵏ ⵏ ⴱⵏⴳⵍⴰⴷⵉⵛ ⴷ ⵍⵀⵉⵏⴷ';
             }
-            context.fillStyle = this.textColor;
-            context.font = '70px ' + this.fontFamily;
-            context.fillText(message1, this.game.width * 0.5, this.game.height * 0.5 - 20);
-            context.font = '25px ' + this.fontFamilyST;
-            context.fillText(message2, this.game.width * 0.5, this.game.height * 0.5 + 20);
+            this.game.ctx.fillStyle = this.textColor;
+            this.game.ctx.font = '70px ' + this.fontFamily;
+            this.game.ctx.fillText(message1, this.game.width * 0.5, this.game.height * 0.5 - 20);
+            this.game.ctx.font = '25px ' + this.fontFamilyST;
+            this.game.ctx.fillText(message2, this.game.width * 0.5, this.game.height * 0.5 + 20);
         }
 
-        context.fillStyle = this.indicatorColor;
+        this.game.ctx.fillStyle = this.indicatorColor;
         for (let i = 0; i < this.game.ammo; i++) {
-            context.fillRect(5 * i + 20, 50, 3, 20);
+            this.game.ctx.fillRect(5 * i + 20, 50, 3, 20);
         }
-        context.fillStyle = this.hungryColor;
+        this.game.ctx.fillStyle = this.hungryColor;
         for (let i = 0; i < this.game.hungry; i++) {
-            context.fillRect(5 * i + 20, 110, 3, 20);
+            this.game.ctx.fillRect(5 * i + 20, 110, 3, 20);
         }
-        context.restore();
+        this.game.ctx.restore();
     }
 }
