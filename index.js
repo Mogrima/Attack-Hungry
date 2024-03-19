@@ -8,7 +8,7 @@ window.addEventListener('load', function () {
     canvas.width = 1500;
     canvas.height = 500; 
 
-    const game = new Game(canvas.width, canvas.height);
+    const game = new Game(canvas, ctx);
     let lastTime = 0;
 
     // animation loop

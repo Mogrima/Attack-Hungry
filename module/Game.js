@@ -9,9 +9,12 @@ import {Background} from '../UI/Background.js';
 import { Particle } from './Particle.js';
 
 export class Game {
-    constructor(width, height) {
-        this.width = width;
-        this.height = height;
+    constructor(canvas, ctx) {
+        this.canvas = canvas;
+        this.ctx = ctx;
+        this.width = this.canvas.width;
+        this.height = this.canvas.height;
+        
         this.player = new Player(this);
 
         this.keys = new Set();
