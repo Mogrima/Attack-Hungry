@@ -116,6 +116,7 @@ export class Game {
         this.gameOver = false;
         this.gameTime = 0;
         this.space.resize();
+        this.player.resize();
     }
 
     handleSpriteTimer(deltaTime) {

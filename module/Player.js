@@ -3,16 +3,17 @@ import {Projectile} from './Projectile.js';
 export class Player {
     constructor(game) {
         this.game = game;
+        this.x = 0;
+        this.y = 0;
         this.image = document.getElementById('player');
         this.spriteWidth = 32;
         this.spriteHeight = 18;
-        this.sizeModifier = 3;
-        this.width = this.spriteWidth * this.sizeModifier;
-        this.height = this.spriteHeight * this.sizeModifier;
-        this.x = this.game.width * 0.5 - (this.width * 0.5);
-        this.y = this.game.height - this.height;
+        this.sizeModifier = 4;
+        this.width;
+        this.height;
+
         this.speedX = 0;
-        this.maxSpeed = 10;
+        this.maxSpeed;
 
         this.projectiles = [];
 
@@ -21,6 +22,7 @@ export class Player {
         this.maxFrame = 7;
 
     }
+
     update() {
         this.x += this.speedX;
 
@@ -63,5 +65,13 @@ export class Player {
                 this.x + this.width * 0.5, this.y + 20));
             this.game.ammo--;
         }
+    }
+
+    resize() {
+        this.width = (this.spriteWidth * this.sizeModifier) * this.game.ratio;
+        this.height = (this.spriteHeight * this.sizeModifier) * this.game.ratio;
+        this.x = this.game.width * 0.5 - (this.width * 0.5);
+        this.y = this.game.height - this.height;
+        this.maxSpeed = 10 * this.game.ratio;
     }
 } 
