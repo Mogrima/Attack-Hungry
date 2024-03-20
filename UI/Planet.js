@@ -1,15 +1,11 @@
-export class Planet {
+import { CelestialObjects } from "./CelestialObjects.js";
+
+export class Planet extends CelestialObjects {
     constructor(game) {
-        this.game = game;
+        super(game);
         this.image = document.getElementById('bg_objects');
         this.spriteSize = 64;
         this.size;
-        this.x;
-        this.y;
-        this.frameX;
-        this.frameY;
-        this.speedY;
-        this.free = true;
     }
 
     resize() {
@@ -19,14 +15,6 @@ export class Planet {
         this.frameX = Math.floor(Math.random() * 4);
         this.frameY = Math.floor(Math.random() * 3);
         this.speedY = (Math.random() * - 0.5 - 0.5) * this.game.ratio;
-    }
-
-    update() {
-        this.y -= this.speedY;
-        if (this.y > this.game.height) {
-            this.x = this.x = Math.random() * this.game.width;;
-            this.y = -this.game.height;
-        }
     }
 
     draw() {
