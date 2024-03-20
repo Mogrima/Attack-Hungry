@@ -164,6 +164,7 @@ export class Game {
     }
 
     createParticlePool() {
+        this.particlePool = [];
         for (let i = 0; i < this.numberOfParticle; i++) {
             this.particlePool.push(new Particle(this));
         }
