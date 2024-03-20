@@ -7,7 +7,7 @@ export class Projectile {
         this.spriteHeight = 68;
         this.width;
         this.height;
-        this.speed = 3;
+        this.speed;
 
         this.image = document.getElementById('projectiles');
         this.frameY = 9;
@@ -18,8 +18,6 @@ export class Projectile {
 
     start(x, y) {
         this.free = false;
-        this.width = this.spriteWidth * this.game.ratio;
-        this.height = this.spriteHeight * this.game.ratio;
         this.x = x;
         this.y = y;
     }
@@ -29,8 +27,10 @@ export class Projectile {
     }
 
     resize() {
+        this.free = true;
         this.width = this.spriteWidth * this.game.ratio;
         this.height = this.spriteHeight * this.game.ratio;
+        this.speed = 3 * this.game.ratio;
     }
 
     update() {

@@ -76,6 +76,9 @@ export class Player {
         this.x = this.game.width * 0.5 - (this.width * 0.5);
         this.y = this.game.height - this.height;
         this.maxSpeed = 10 * this.game.ratio;
+        this.projectilePool.forEach(pr => {
+            pr.resize();
+        });
     }
 
     createProjectilePool() {
