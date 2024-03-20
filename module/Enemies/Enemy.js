@@ -4,6 +4,7 @@ export class Enemy {
         this.x;
         this.y;
         this.speedY;
+        this.sizeModifier = 3;
 
         this.frameX;
         this.frameY = 0;
