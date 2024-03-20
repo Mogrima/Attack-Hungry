@@ -62,6 +62,12 @@ export class Game {
         this.spriteUpdate = false;
         this.spriteTimer = 0;
         this.spriteInterval = 150;
+        this.resize(window.innerWidth, window.innerHeight);
+
+        window.addEventListener('resize', e => {
+            this.resize(e.currentTarget.innerWidth,
+                e.currentTarget.innerHeight);
+        });
         
     }
 
@@ -94,6 +100,18 @@ export class Game {
             enemy.update();
         });
         
+    }
+
+    resize(width, height) {
+        this.canvas.width = width;
+        this.canvas.height = height;
+        this.width = width;
+        this.height = height;
+        this.ratio = this.width / this.baseWidth;
+        this.speed = 3 * this.ratio;
+        this.score = 0;
+        this.gameOver = false;
+        this.gameTime = 0;
     }
 
     handleSpriteTimer(deltaTime) {
