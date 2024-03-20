@@ -18,7 +18,7 @@ export class Enemy {
         this.free = false;
         this.x = Math.random() * (this.game.width * 0.95 - this.width);
         this.y = -this.height;
-        this.speedY = Math.random() * -1.5 - 2.5;
+        this.speedY = (Math.random() * -1.5 - 2.5) * this.game.ratio;
         this.frameX = 0;
     }
 
