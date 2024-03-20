@@ -34,7 +34,7 @@ export class Particle {
         this.frameX = Math.floor(Math.random() * 8);
         this.frameY = Math.floor(Math.random() * 6);
         this.spriteSize = 32;
-        this.sizeModifer = (Math.random() * 0.5 + 0.5).toFixed(1);
+        this.sizeModifer = ((Math.random() * 1.5 + 1.5).toFixed(1));
         this.size = this.spriteSize * this.sizeModifer;
         this.width = this.size;
         this.height = this.size;
