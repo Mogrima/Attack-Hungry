@@ -39,7 +39,6 @@ export class Game {
 
         this.enemyPool = [];
         this.numberOfenemies = 50;
-        this.createEnemyPool();
         this.enemyTimer = 0;
         this.enemyInterval = 1000;
         this.gameOver = false;
@@ -117,6 +116,10 @@ export class Game {
         this.gameTime = 0;
         this.space.resize();
         this.player.resize();
+        this.createEnemyPool();
+        this.enemyPool.forEach(enemy => {
+            enemy.resize();
+        });
     }
 
     handleSpriteTimer(deltaTime) {

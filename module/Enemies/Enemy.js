@@ -14,6 +14,11 @@ export class Enemy {
         this.free = true;
     }
 
+    resize() {
+        this.width = (this.spriteWidth * this.sizeModifier) * this.game.ratio;
+        this.height = (this.spriteHeight * this.sizeModifier) * this.game.ratio;
+    }
+
     start() {
         this.free = false;
         this.x = Math.random() * (this.game.width * 0.95 - this.width);

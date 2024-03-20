@@ -5,8 +5,8 @@ export class Spaceship4 extends Enemy {
         super(game);
         this.spriteWidth = 48;
         this.spriteHeight = 26;
-        this.width = 48;
-        this.height = 26;
+        this.width;
+        this.height;
         this.image = document.getElementById('enemy4');
 
         this.lives = 2;
