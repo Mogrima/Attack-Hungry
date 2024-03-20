@@ -18,7 +18,7 @@ export class Planet {
         this.y = Math.random() * (this.game.height * 2);
         this.frameX = Math.floor(Math.random() * 4);
         this.frameY = Math.floor(Math.random() * 3);
-        this.speedY = (Math.random() * - 2 - 1) * this.game.ratio;
+        this.speedY = (Math.random() * - 0.5 - 0.5) * this.game.ratio;
     }
 
     update() {
