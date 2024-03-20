@@ -13,6 +13,9 @@ export class Game {
         this.ctx = ctx;
         this.width = this.canvas.width;
         this.height = this.canvas.height;
+        this.baseHeight = 1768;
+        this.baseWidth = 1768;
+        this.ratio = this.width / this.baseWidth;
         
         this.player = new Player(this);
 
