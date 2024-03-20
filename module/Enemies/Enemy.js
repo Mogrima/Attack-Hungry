@@ -72,8 +72,8 @@ export class Enemy {
     draw() {
         if (!this.free) {
             this.game.ctx.drawImage(this.image,
-                this.frameX * this.width, this.frameY * this.height,
-                this.width, this.height, this.x, this.y, this.width, this.height);
+                this.frameX * this.spriteWidth, this.frameY * this.spriteHeight,
+                this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height);
     
             // отобразим у каждого врага его жизни
             if(this.game.debug) {

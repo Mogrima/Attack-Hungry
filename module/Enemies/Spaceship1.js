@@ -3,6 +3,8 @@ import {Enemy} from './Enemy.js';
 export class Spaceship1 extends Enemy {
     constructor(game) {
         super(game);
+        this.spriteWidth = 48;
+        this.spriteHeight = 29;
         this.width = 48;
         this.height = 29;
         this.image = document.getElementById('enemy1');
