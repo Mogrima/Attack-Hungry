@@ -15,11 +15,13 @@ export class Player {
         this.speedX = 0;
         this.maxSpeed;
 
-        this.projectiles = [];
+        this.projectilePool = [];
+        this.projectileOfNumber = 20;
 
         this.frameX = 0;
         this.frameY = 0;
         this.maxFrame = 7;
+        this.createProjectilePool();
 
     }
 
@@ -34,8 +36,7 @@ export class Player {
         width - this.width * 0.5;
         else if (this.x < -this.width * 0.5) this.x = -this.width * 0.5;
 
-        this.projectiles.forEach(pr => { pr.update(); });
-        this.projectiles = this.projectiles.filter(pr => !pr.markedForDeletion);
+        this.projectilePool.forEach(pr => { pr.update(); });
 
         // sprite animation
         if (this.game.spriteUpdate) {
@@ -51,7 +52,7 @@ export class Player {
         // hitbox player
         this.game.ctx.strokeStyle = "yellow";
         if (this.game.debug) this.game.ctx.strokeRect(this.x, this.y, this.width, this.height);
-        this.projectiles.forEach(pr => { pr.draw()});
+        this.projectilePool.forEach(pr => { pr.draw()});
         this.game.ctx.drawImage(this.image,
             this.frameX * this.spriteWidth, this.frameY * this.spriteHeight,
             this.spriteWidth, this.spriteHeight, this.x, this.y,
@@ -61,8 +62,10 @@ export class Player {
 
     shoot() {
         if (this.game.ammo > 0) {
-            this.projectiles.push(new Projectile(this.game,
-                this.x + this.width * 0.5, this.y + 20));
+            const projectile = this.getProjectile();
+            if (projectile) {
+                projectile.start(this.x + this.width * 0.5, this.y + 20);
+            }
             this.game.ammo--;
         }
     }
@@ -73,5 +76,18 @@ export class Player {
         this.x = this.game.width * 0.5 - (this.width * 0.5);
         this.y = this.game.height - this.height;
         this.maxSpeed = 10 * this.game.ratio;
+    }
+
+    createProjectilePool() {
+        this.projectilePool = [];
+        for (let i = 0; i < this.projectileOfNumber; i++) {
+            this.projectilePool.push(new Projectile(this.game));
+        }
+    }
+
+    getProjectile() {
+        for (let i = 0; i < this.projectilePool.length; i++) {
+            if (this.projectilePool[i].free) return this.projectilePool[i];
+        }
     }
 } 

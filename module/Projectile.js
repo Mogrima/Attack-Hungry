@@ -1,36 +1,58 @@
 export class Projectile {
-    constructor(game, x, y) {
+    constructor(game) {
         this.game = game;
-        this.x = x;
-        this.y = y;
+        this.x;
+        this.y;
         this.spriteWidth = 10;
         this.spriteHeight = 68;
-        this.width = 10;
-        this.height = 68;
+        this.width;
+        this.height;
         this.speed = 3;
-        this.markedForDeletion = false;
 
         this.image = document.getElementById('projectiles');
         this.frameY = 9;
         this.frameX = 0;
         this.maxFrame = 9;
+        this.free = true;
     }
-  
-    update() {
-        this.y -= this.speed;
-        if (this.y < this.game.height * 0.1) this.markedForDeletion = true;
 
-        if(this.frameY > 0) {
-            this.frameY--;
-        } else {
-            this.frameY = this.maxFrame;
+    start(x, y) {
+        this.free = false;
+        this.width = this.spriteWidth * this.game.ratio;
+        this.height = this.spriteHeight * this.game.ratio;
+        this.x = x;
+        this.y = y;
+    }
+
+    reset() {
+        this.free = true;
+    }
+
+    resize() {
+        this.width = this.spriteWidth * this.game.ratio;
+        this.height = this.spriteHeight * this.game.ratio;
+    }
+
+    update() {
+        if (!this.free) {
+            this.y -= this.speed;
+            if (this.y < this.game.height * 0.1) this.reset();
+
+            if (this.frameY > 0) {
+                this.frameY--;
+            } else {
+                this.frameY = this.maxFrame;
+            }
         }
     }
-  
+
     draw() {
-        // this.game.ctx.fillStyle = '#120a8f';
-        // this.game.ctx.fillRect(this.x, this.y, this.width, this.height);
-        this.game.ctx.drawImage(this.image, this.spriteWidth * this.frameX, this.spriteHeight * this.frameY,
-            this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height);
+        if (!this.free) {
+           
+            // this.game.ctx.fillStyle = '#120a8f';
+            // this.game.ctx.fillRect(this.x, this.y, this.width, this.height);
+            this.game.ctx.drawImage(this.image, this.spriteWidth * this.frameX, this.spriteHeight * this.frameY,
+                this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height);
+        }
     }
 }
