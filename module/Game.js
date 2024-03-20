@@ -55,7 +55,6 @@ export class Game {
 
         this.particlePool = [];
         this.numberOfParticle = 50;
-        this.createParticlePool();
 
         this.direction = new Set();
 
@@ -119,6 +118,7 @@ export class Game {
         this.enemyPool.forEach(enemy => {
             enemy.resize();
         });
+        this.createParticlePool();
     }
 
     handleSpriteTimer(deltaTime) {
