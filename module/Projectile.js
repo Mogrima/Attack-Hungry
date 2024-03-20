@@ -3,6 +3,8 @@ export class Projectile {
         this.game = game;
         this.x = x;
         this.y = y;
+        this.spriteWidth = 10;
+        this.spriteHeight = 68;
         this.width = 10;
         this.height = 68;
         this.speed = 3;
@@ -28,6 +30,7 @@ export class Projectile {
     draw() {
         // this.game.ctx.fillStyle = '#120a8f';
         // this.game.ctx.fillRect(this.x, this.y, this.width, this.height);
-        this.game.ctx.drawImage(this.image, this.width * this.frameX, this.height * this.frameY, this.width, this.height, this.x, this.y, this.width, this.height);
+        this.game.ctx.drawImage(this.image, this.spriteWidth * this.frameX, this.spriteHeight * this.frameY,
+            this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height);
     }
 }
