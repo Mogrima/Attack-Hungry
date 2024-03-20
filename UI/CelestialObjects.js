@@ -24,7 +24,7 @@ export class CelestialObjects {
         this.y -= this.speedY;
         if (this.y > this.game.height) {
             this.x = this.x = Math.random() * this.game.width;;
-            this.y = -this.game.height;
+            this.y = -this.height || -this.size;
         }
     }
 
