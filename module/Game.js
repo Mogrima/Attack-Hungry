@@ -53,7 +53,6 @@ export class Game {
 
         this.debug = true;
 
-        this.particles = [];
         this.particlePool = [];
         this.numberOfParticle = 50;
         this.createParticlePool();
