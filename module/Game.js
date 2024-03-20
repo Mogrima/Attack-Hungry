@@ -130,6 +130,7 @@ export class Game {
     }
 
     createEnemyPool() {
+        this.enemyPool = [];
         for (let i = 0; i < this.numberOfenemies; i++) {
             const randomNumber = Math.random();
             if (randomNumber < 0.3) {
