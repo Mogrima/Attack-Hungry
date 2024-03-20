@@ -6,6 +6,7 @@ import {Spaceship2} from './Enemies/Spaceship2.js';
 import {Spaceship3} from './Enemies/Spaceship3.js';
 import {Spaceship4} from './Enemies/Spaceship4.js';
 import { Particle } from './Particle.js';
+import { Space } from '../UI/Space.js';
 
 export class Game {
     constructor(canvas, ctx) {
@@ -49,6 +50,7 @@ export class Game {
         this.timeLimit = 40 * 1000;
 
         this.speed = 13;
+        this.space = new Space(this);
 
         this.debug = true;
 
@@ -75,6 +77,7 @@ export class Game {
         this.handleSpriteTimer(deltaTime);
         if (!this.gameOver) this.gameTime += deltaTime;
         if (this.gameTime > this.timeLimit) this.gameOver = true;
+        this.space.update();
 
         this.player.update();
 
@@ -112,6 +115,7 @@ export class Game {
         this.score = 0;
         this.gameOver = false;
         this.gameTime = 0;
+        this.space.resize();
     }
 
     handleSpriteTimer(deltaTime) {
@@ -180,6 +184,7 @@ export class Game {
     }
 
     draw() {
+        this.space.draw();
         this.ui.draw();
         this.player.draw();
         this.particlePool.forEach(particle => particle.draw());
