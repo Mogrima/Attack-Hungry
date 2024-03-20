@@ -34,15 +34,15 @@ export class Particle {
         this.frameX = Math.floor(Math.random() * 8);
         this.frameY = Math.floor(Math.random() * 6);
         this.spriteSize = 32;
-        this.sizeModifer = ((Math.random() * 1.5 + 1.5).toFixed(1));
+        this.sizeModifer = ((Math.random() * 1.5 + 1.5).toFixed(1)) * this.game.ratio;
         this.size = this.spriteSize * this.sizeModifer;
         this.width = this.size;
         this.height = this.size;
-        this.speedX = Math.random() * 6 - 3;
-        this.speedY = Math.random() * - 15;
-        this.gravity = 0.5;
+        this.speedX = (Math.random() * 6 - 3)  * this.game.ratio;
+        this.speedY = (Math.random() * - 15) * this.game.ratio;
+        this.gravity = 0.5 * this.game.ratio;
         this.angle = 0;
-        this.va = Math.random() * 0.2 - 0.1;
+        this.va = (Math.random() * 0.2 - 0.1) * this.game.ratio;
         this.bounced = 0;
         this.bottomBounceBoundary = Math.random() * 100 + 60;
     }
