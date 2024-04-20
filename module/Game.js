@@ -44,7 +44,7 @@ export class Game {
         this.winningScore = 30;
 
         this.gameTime;
-        this.timeLimit = 40 * 1000;
+        this.timeLimit = 90000;
         this.speed;
         
         this.debug = true;
