@@ -50,6 +50,8 @@ export class Enemy {
                 this.reset();
                 const explosion = this.game.getExplosion();
                 if (explosion) explosion.start(this.x + this.width * 0.5, this.y + this.height * 0.5);
+                if (!this.game.gameOver) this.game.rage += this.score;
+                if (this.game.rage >= this.game.maxRage) this.game.gameOver = true;
             }
 
             this.game.player.projectilePool.forEach(projectile => {
