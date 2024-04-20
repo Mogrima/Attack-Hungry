@@ -48,6 +48,8 @@ export class Enemy {
 
             if (this.game.checkCollision(this.game.player, this)) {
                 this.reset();
+                const explosion = this.game.getExplosion();
+                if (explosion) explosion.start(this.x + this.width * 0.5, this.y + this.height * 0.5);
             }
 
             this.game.player.projectilePool.forEach(projectile => {
