@@ -36,6 +36,9 @@ export class Game {
         this.maxHungry = 50;
         this.hungryTimer = 0;
 
+        this.rage = 0;
+        this.maxRage = 2;
+
         this.enemyPool = [];
         this.numberOfenemies = 50;
         this.enemyTimer = 0;
@@ -199,7 +202,10 @@ export class Game {
     }
 
     isWin() {
-        return this.score >= this.winningScore;
+        if (this.score >= this.winningScore) return true;
+        if (this.rage >= this.maxRage) {
+            return false;
+        }
     }
 
     draw() {

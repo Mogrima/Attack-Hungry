@@ -8,6 +8,7 @@ export class UI {
         this.textColor = '#00ffff';
         this.indicatorColor = '#66ff00';
         this.hungryColor = '#f80000';
+        this.rageColor = '#e239ff';
     }
 
     draw() {
@@ -21,9 +22,11 @@ export class UI {
         this.game.ctx.fillText('Score: ' + this.game.score, 20, 40);
         //
         this.game.ctx.fillText('Hungry: ', 20, 100);
+        //
+        this.game.ctx.fillText('Rage: ', 20, 160);
          // таймер
          const formattedTime = (this.game.gameTime * 0.001).toFixed(1);
-         this.game.ctx.fillText('Timer: ' + formattedTime, 20, 160);
+         this.game.ctx.fillText('Timer: ' + formattedTime, 20, 240);
         // сообщения о победе или проигрыше
         if (this.game.gameOver) {
             this.game.ctx.textAlign = 'center';
@@ -50,6 +53,10 @@ export class UI {
         this.game.ctx.fillStyle = this.hungryColor;
         for (let i = 0; i < this.game.hungry; i++) {
             this.game.ctx.fillRect(5 * i + 20, 110, 3, 20);
+        }
+        this.game.ctx.fillStyle = this.rageColor;
+        for (let i = 0; i < this.game.rage; i++) {
+            this.game.ctx.fillRect(5 * i + 20, 170, 3, 20);
         }
         this.game.ctx.restore();
     }
