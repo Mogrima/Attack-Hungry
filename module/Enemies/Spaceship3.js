@@ -18,6 +18,6 @@ export class Spaceship3 extends Enemy {
     start() {
         super.start();
         this.lives = this.maxLives;
-        this.speedY = Math.random() * -1.5 - 1.5;
+        this.speedY = (Math.random() * -1.5 - 1.5) * this.game.ratio;
     }
 }
