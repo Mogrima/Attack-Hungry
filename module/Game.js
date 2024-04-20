@@ -87,11 +87,18 @@ export class Game {
         }
 
         if (this.hungryTimer > this.hungryInterval) {
-            if (this.hungry < this.maxHungry) this.hungry++;
+            if (this.hungry < this.maxHungry) {
+                this.hungry++;
+            }
+            if (this.hungry >= this.maxHungry * 0.5) this.rage++;
+            if (this.hungry <= 1) this.rage--;
             this.hungryTimer = 0;
         } else {
             this.hungryTimer += deltaTime;
         }
+
+        if (this.rage <= 0) this.rage = 0;
+        if (this.rage >= this.maxRage) this.rage = this.maxRage;
 
         this.particlePool.forEach(particle => particle.update());
 
