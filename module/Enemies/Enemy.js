@@ -4,6 +4,7 @@ export class Enemy {
         this.x;
         this.y;
         this.speedY;
+        this.speedX;
         this.sizeModifier = 3;
 
         this.frameX;
@@ -24,6 +25,7 @@ export class Enemy {
         this.x = Math.random() * (this.game.width * 0.95 - this.width);
         this.y = -this.height;
         this.speedY = (Math.random() * -1.5 - 2.5) * this.game.ratio;
+        this.speedX = (Math.random() * 2 - 1) * this.game.ratio;
         this.frameX = 0;
     }
 
@@ -36,8 +38,13 @@ export class Enemy {
                 
             // Обновляем x-координату врага (уменьшаем ее на величину speedX)
             this.y -= this.speedY;
+            this.x += this.speedX;
             // Помечаем врага как удаленного, если он полностью пересечет левую границу игрового поля
             if (this.y > this.game.height ) this.reset();
+
+            if (this.x <= 0 || this.x >= this.game.width - this.width) {
+                this.speedX *= -1;
+            }
 
             if (this.game.checkCollision(this.game.player, this)) {
                 this.reset();
