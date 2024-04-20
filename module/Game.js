@@ -7,6 +7,7 @@ import {Spaceship3} from './Enemies/Spaceship3.js';
 import {Spaceship4} from './Enemies/Spaceship4.js';
 import { Particle } from './Particle.js';
 import { Space } from '../UI/Space.js';
+import { Explosion } from './Explosion.js';
 
 export class Game {
     constructor(canvas, ctx) {
@@ -52,6 +53,9 @@ export class Game {
         this.particlePool = [];
         this.numberOfParticle = 50;
 
+        this.explosionPool = [];
+        this.numberOfExplosions = 10;
+
         this.spriteUpdate = false;
         this.spriteTimer = 0;
         this.spriteInterval = 150;
@@ -93,6 +97,8 @@ export class Game {
         this.enemyPool.forEach(enemy => {
             enemy.update();
         });
+
+        this.explosionPool.forEach(explosion => explosion.update());
         
     }
 
@@ -113,6 +119,7 @@ export class Game {
             enemy.resize();
         });
         this.createParticlePool();
+        this.createExplosionPool();
     }
 
     handleSpriteTimer(deltaTime) {
@@ -170,6 +177,19 @@ export class Game {
         }
     }
 
+    createExplosionPool() {
+        this.explosionPool = [];
+        for (let i = 0; i < this.numberOfExplosions; i++) {
+            this.explosionPool.push(new Explosion(this));
+        }
+    }
+
+    getExplosion() {
+        for (let i = 0; i < this.explosionPool.length; i++) {
+            if (this.explosionPool[i].free) return this.explosionPool[i];
+        }
+    }
+
     checkCollision(rect1, rect2) {
         return (
             rect1.x < rect2.x + rect2.width &&
@@ -188,6 +208,7 @@ export class Game {
         this.player.draw();
         this.particlePool.forEach(particle => particle.draw());
         this.enemyPool.forEach(enemy => enemy.draw());
+        this.explosionPool.forEach(explosion => explosion.draw());
 
     }
 }
