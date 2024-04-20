@@ -16,47 +16,41 @@ export class Game {
         this.height = this.canvas.height;
         this.baseHeight = 1768;
         this.baseWidth = 1768;
-        this.ratio = this.width / this.baseWidth;
+        this.ratio;
         
         this.player = new Player(this);
-
         this.keys = new Set();
         this.input = new InputHandler(this);
+        this.ui = new UI(this);
+        this.space = new Space(this);
+        this.direction = new Set();
 
         this.ammo = 20;
-
         this.ammoInterval = 500;
         this.maxAmmo = 50;
         this.ammoTimer = 0;
 
         this.hungry = 0;
-
         this.hungryInterval = 1000;
         this.maxHungry = 50;
         this.hungryTimer = 0;
-
-        this.ui = new UI(this);
 
         this.enemyPool = [];
         this.numberOfenemies = 50;
         this.enemyTimer = 0;
         this.enemyInterval = 1000;
-        this.gameOver = false;
-        this.score = 0;
+        this.gameOver;
+        this.score;
         this.winningScore = 30;
 
-        this.gameTime = 0;
+        this.gameTime;
         this.timeLimit = 40 * 1000;
-
-        this.speed = 13;
-        this.space = new Space(this);
-
+        this.speed;
+        
         this.debug = true;
 
         this.particlePool = [];
         this.numberOfParticle = 50;
-
-        this.direction = new Set();
 
         this.spriteUpdate = false;
         this.spriteTimer = 0;
