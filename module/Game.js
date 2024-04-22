@@ -37,7 +37,7 @@ export class Game {
         this.hungryTimer = 0;
 
         this.rage = 0;
-        this.maxRage = 2;
+        this.maxRage = 20;
 
         this.enemyPool = [];
         this.numberOfenemies = 50;
