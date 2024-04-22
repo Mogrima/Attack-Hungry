@@ -14,8 +14,8 @@ export class Explosion {
 
     start(x, y) {
         this.free = false;
-        this.x = x - this.width * 0.5;
-        this.y = y - this.height * 0.5;
+        this.x = x - this.size * 0.5;
+        this.y = y - this.size * 0.5;
         this.frameX = 0;
         this.frameY = Math.floor(Math.random() * 4);
     }
