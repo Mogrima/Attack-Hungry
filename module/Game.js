@@ -86,7 +86,7 @@ export class Game {
             this.ammoTimer += deltaTime;
         }
 
-        if (this.hungryTimer > this.hungryInterval) {
+        if (this.hungryTimer > this.hungryInterval && !this.gameOver) {
             if (this.hungry < this.maxHungry) {
                 this.hungry++;
             }
