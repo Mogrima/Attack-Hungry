@@ -2,6 +2,8 @@ export class UI {
     constructor(game) {
         this.game = game;
         this.fontSize = 25;
+        this.largeFont = Math.ceil(90 * this.game.ratio);
+        this.smallFont = Math.ceil(45 * this.game.ratio);
         this.fontFamily = 'Unica One';
         this.fontFamilyST = 'Akatab';
         this.color = 'white';
@@ -40,10 +42,12 @@ export class UI {
                 message2 = ' ⵢⵓⵔⴰ ⵉⵣⵍⴰⵏ ⵉⵏⴰⵎⵓⵔⵏ ⵏ ⴱⵏⴳⵍⴰⴷⵉⵛ ⴷ ⵍⵀⵉⵏⴷ';
             }
             this.game.ctx.fillStyle = this.textColor;
-            this.game.ctx.font = '70px ' + this.fontFamily;
-            this.game.ctx.fillText(message1, this.game.width * 0.5, this.game.height * 0.5 - 20);
-            this.game.ctx.font = '25px ' + this.fontFamilyST;
-            this.game.ctx.fillText(message2, this.game.width * 0.5, this.game.height * 0.5 + 20);
+            this.game.ctx.font = this.largeFont + 'px ' + this.fontFamily;
+            this.game.ctx.fillText(message1, this.game.width * 0.5,
+                this.game.height * 0.5 - (30 * this.game.ratio));
+            this.game.ctx.font = this.smallFont + 'px ' + this.fontFamilyST;
+            this.game.ctx.fillText(message2, this.game.width * 0.5,
+                this.game.height * 0.5 + (30 * this.game.ratio));
         }
 
         this.game.ctx.fillStyle = this.indicatorColor;
