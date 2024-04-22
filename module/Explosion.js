@@ -8,7 +8,7 @@ export class Explosion {
         this.frameY;
         this.maxFrame = 5;
         this.spriteSize = 80;
-        this.size = this.spriteSize;
+        this.size = (this.spriteSize * 1.5) * this.game.ratio;
         this.width = this.size;
         this.height = this.size;
         this.free = true;
