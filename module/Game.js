@@ -17,7 +17,7 @@ export class Game {
         this.height = this.canvas.height;
         this.baseHeight = 1768;
         this.baseWidth = 1768;
-        this.ratio;
+        this.ratio = this.width / this.baseWidth;
         
         this.player = new Player(this);
         this.keys = new Set();
