@@ -58,8 +58,6 @@ export class Enemy {
                 if (!projectile.free && this.game.checkCollision(projectile, this)) {
                     projectile.reset();
                     this.lives--;
-                    const particle = this.game.getParticle();
-                    if (particle) particle.start(this.x + this.width * 0.5, this.y + this.height * 0.5);
                     projectile.reset();
                     if (this.lives <= 0) {        
                         this.reset();
