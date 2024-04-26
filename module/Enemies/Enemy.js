@@ -46,7 +46,7 @@ export class Enemy {
                 this.speedX *= -1;
             }
 
-            if (this.game.checkCollision(this.game.player, this)) {
+            if (this.game.checkCollision(this.game.player, this) && !this.game.gameOver) {
                 this.reset();
                 const explosion = this.game.getExplosion();
                 if (explosion) explosion.start(this.x + this.width * 0.5, this.y + this.height * 0.5);
