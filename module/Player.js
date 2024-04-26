@@ -21,42 +21,47 @@ export class Player {
         this.frameX = 0;
         this.frameY = 0;
         this.maxFrame = 7;
+        this.killed;
         this.createProjectilePool();
 
     }
 
     update() {
-        this.x += this.speedX;
+        if (!this.killed) {
+            this.x += this.speedX;
 
-        if (this.game.keys.has('ArrowLeft')) this.speedX = -this.maxSpeed;
-        else if (this.game.keys.has('ArrowRight')) this.speedX = this.maxSpeed;
-        else this.speedX = 0;
-
-        if (this.x > this.game.width - this.width * 0.5) this.x = this.game.
-        width - this.width * 0.5;
-        else if (this.x < -this.width * 0.5) this.x = -this.width * 0.5;
-
-        this.projectilePool.forEach(pr => { pr.update(); });
-
-        // sprite animation
-        if (this.game.spriteUpdate) {
-            if(this.frameX < this.maxFrame) {
-                this.frameX++;
-            }  else {
-                this.frameX = 0;
+            if (this.game.keys.has('ArrowLeft')) this.speedX = -this.maxSpeed;
+            else if (this.game.keys.has('ArrowRight')) this.speedX = this.maxSpeed;
+            else this.speedX = 0;
+    
+            if (this.x > this.game.width - this.width * 0.5) this.x = this.game.
+            width - this.width * 0.5;
+            else if (this.x < -this.width * 0.5) this.x = -this.width * 0.5;
+    
+            this.projectilePool.forEach(pr => { pr.update(); });
+    
+            // sprite animation
+            if (this.game.spriteUpdate) {
+                if(this.frameX < this.maxFrame) {
+                    this.frameX++;
+                }  else {
+                    this.frameX = 0;
+                }
             }
         }
     }
    
     draw() {
-        // hitbox player
-        this.game.ctx.strokeStyle = "yellow";
-        if (this.game.debug) this.game.ctx.strokeRect(this.x, this.y, this.width, this.height);
-        this.projectilePool.forEach(pr => { pr.draw()});
-        this.game.ctx.drawImage(this.image,
-            this.frameX * this.spriteWidth, this.frameY * this.spriteHeight,
-            this.spriteWidth, this.spriteHeight, this.x, this.y,
-            this.width, this.height);
+        if (!this.killed) {
+            // hitbox player
+            this.game.ctx.strokeStyle = "yellow";
+            if (this.game.debug) this.game.ctx.strokeRect(this.x, this.y, this.width, this.height);
+            this.projectilePool.forEach(pr => { pr.draw()});
+            this.game.ctx.drawImage(this.image,
+                this.frameX * this.spriteWidth, this.frameY * this.spriteHeight,
+                this.spriteWidth, this.spriteHeight, this.x, this.y,
+                this.width, this.height);
+        }
 
     }
 
@@ -79,6 +84,7 @@ export class Player {
         this.projectilePool.forEach(pr => {
             pr.resize();
         });
+        this.killed = false;
     }
 
     createProjectilePool() {
