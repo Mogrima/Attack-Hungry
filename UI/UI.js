@@ -28,7 +28,7 @@ export class UI {
         this.game.ctx.fillText('Rage: ' + this.game.rage, 20 * this.game.ratio, 160 * this.game.ratio);
          // таймер
          const formattedTime = (this.game.gameTime * 0.001).toFixed(1);
-         this.game.ctx.fillText('Timer: ' + formattedTime, this.game.width - 120 * this.game.ratio, 40 * this.game.ratio);
+         this.game.ctx.fillText('Timer: ' + formattedTime, this.game.width - 130 * this.game.ratio, 40 * this.game.ratio);
         // сообщения о победе или проигрыше
         if (this.game.gameOver) {
             this.game.ctx.textAlign = 'center';
