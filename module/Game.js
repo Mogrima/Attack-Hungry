@@ -8,6 +8,7 @@ import {Spaceship4} from './Enemies/Spaceship4.js';
 import { Particle } from './Particle.js';
 import { Space } from '../UI/Space.js';
 import { Explosion } from './Explosion.js';
+import { Asteroid } from './Enemies/Asteroid.js';
 
 export class Game {
     constructor(canvas, ctx) {
@@ -43,6 +44,7 @@ export class Game {
         this.numberOfenemies = 50;
         this.enemyTimer = 0;
         this.enemyInterval = 1000;
+        this.asteroidPool = [];
         this.gameOver;
         this.score;
         this.winningScore = 30;
@@ -108,6 +110,10 @@ export class Game {
             enemy.update();
         });
 
+        this.asteroidPool.forEach(asteroid => {
+            asteroid.update();
+        });
+
         this.explosionPool.forEach(explosion => explosion.update());
         
     }
@@ -128,6 +134,9 @@ export class Game {
         this.enemyPool.forEach(enemy => {
             enemy.resize();
         });
+        this.asteroidPool.forEach(asteroid => {
+            asteroid.resize();
+        });
         this.createParticlePool();
         this.createExplosionPool();
     }
@@ -145,6 +154,7 @@ export class Game {
     createEnemyPool() {
         this.enemyPool = [];
         for (let i = 0; i < this.numberOfenemies; i++) {
+            this.asteroidPool.push(new Asteroid(this));
             const randomNumber = Math.random();
             if (randomNumber < 0.3) {
                 this.enemyPool.push(new Spaceship1(this));
@@ -164,11 +174,19 @@ export class Game {
         }
     }
 
+    getAsteroid() {
+        for (let i = 0; i < this.asteroidPool.length; i++) {
+            if (this.asteroidPool[i].free) return this.asteroidPool[i];
+        }
+    }
+
     handleEnemies(deltaTime) {
         if (this.enemyTimer > this.enemyInterval && !this.gameOver) {
             this.enemyTimer = 0;
             const enemy = this.getEnemy();
             if (enemy) enemy.start();
+            const asteroid = this.getAsteroid();
+            if (asteroid) asteroid.start();
         } else {
             this.enemyTimer += deltaTime;
         }
@@ -220,6 +238,9 @@ export class Game {
         this.ui.draw();
         this.player.draw();
         this.particlePool.forEach(particle => particle.draw());
+        this.asteroidPool.forEach(asteroid => {
+            asteroid.draw();
+        });
         this.enemyPool.forEach(enemy => enemy.draw());
         this.explosionPool.forEach(explosion => explosion.draw());
 
