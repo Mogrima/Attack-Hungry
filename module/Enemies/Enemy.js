@@ -64,7 +64,7 @@ export class Enemy {
                     projectile.reset();
                     this.lives--;
                     projectile.reset();
-                    if (this.lives <= 0) {        
+                    if (this.lives < 1) {        
                         this.reset();
                         for(let i = 0; i < this.countParticles; i++) {
                             const particle = this.game.getParticle();
