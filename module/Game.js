@@ -8,8 +8,8 @@ import {Spaceship4} from './Enemies/Spaceship4.js';
 import { Particle } from './Particle.js';
 import { Space } from '../UI/Space.js';
 import { Asteroid } from './Enemies/Asteroid.js';
-import { SmokeExplosion } from './SmokeExplosion.js';
-import { FireExplosion } from './FireExplosion.js';
+import { SmokeExplosion } from './Explosion/SmokeExplosion.js';
+import { FireExplosion } from './Explosion/FireExplosion.js';
 
 export class Game {
     constructor(canvas, ctx) {
