@@ -20,3 +20,33 @@
 .assets {
     display: none;
 }
+.controls {
+    position: absolute;
+    top: 15px;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.controls > button {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    background: #423189;
+    color: white;
+    font-family: 'Unica One', sans-serif;
+    font-size: 20px;
+    border: 1px solid whitesmoke;
+    box-shadow: 1px 1px 1px black;
+    text-shadow: 1px 1px 1px black;
+    transition: 0.3s;
+}
+
+.controls > button:hover,
+.controls > button:active,
+.controls > button:focus {
+    background: #08e8de;
+    box-shadow: 4px 4px 4px black;
+    text-shadow: 2px 2px 2px black;
+}
