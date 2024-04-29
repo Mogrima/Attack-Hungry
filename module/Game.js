@@ -7,8 +7,8 @@ import {Spaceship3} from './Enemies/Spaceship3.js';
 import {Spaceship4} from './Enemies/Spaceship4.js';
 import { Particle } from './Particle.js';
 import { Space } from '../UI/Space.js';
-import { Explosion } from './Explosion.js';
 import { Asteroid } from './Enemies/Asteroid.js';
+import { FireExplosion } from './FireExplosion.js';
 
 export class Game {
     constructor(canvas, ctx) {
@@ -208,7 +208,7 @@ export class Game {
     createExplosionPool() {
         this.explosionPool = [];
         for (let i = 0; i < this.numberOfExplosions; i++) {
-            this.explosionPool.push(new Explosion(this));
+            this.explosionPool.push(new FireExplosion(this));
         }
     }
 

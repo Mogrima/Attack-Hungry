@@ -3,7 +3,6 @@ export class Explosion {
         this.game = game;
         this.x;
         this.y;
-        this.image = document.getElementById('explosions');
         this.frameX;
         this.frameY;
         this.maxFrame = 5;
