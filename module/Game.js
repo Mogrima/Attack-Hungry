@@ -8,6 +8,7 @@ import {Spaceship4} from './Enemies/Spaceship4.js';
 import { Particle } from './Particle.js';
 import { Space } from '../UI/Space.js';
 import { Asteroid } from './Enemies/Asteroid.js';
+import { SmokeExplosion } from './SmokeExplosion.js';
 import { FireExplosion } from './FireExplosion.js';
 
 export class Game {
@@ -60,6 +61,7 @@ export class Game {
 
         this.explosionPool = [];
         this.numberOfExplosions = 10;
+        this.smokeExplosion = new SmokeExplosion(this);
 
         this.spriteUpdate = false;
         this.spriteTimer = 0;
@@ -115,7 +117,7 @@ export class Game {
         });
 
         this.explosionPool.forEach(explosion => explosion.update());
-        
+        this.smokeExplosion.update();
     }
 
     resize(width, height) {
@@ -243,6 +245,6 @@ export class Game {
         });
         this.enemyPool.forEach(enemy => enemy.draw());
         this.explosionPool.forEach(explosion => explosion.draw());
-
+        this.smokeExplosion.draw();
     }
 }
