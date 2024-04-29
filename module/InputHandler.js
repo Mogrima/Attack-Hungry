@@ -1,6 +1,7 @@
 export class InputHandler {
     constructor(game) {
         this.game = game;
+        let initialX;
         window.addEventListener('keydown', (e) => {
             if (((e.key === 'ArrowRight') || (e.key === 'ArrowLeft'))) {
                 this.game.keys.add(e.key);
@@ -25,6 +26,30 @@ export class InputHandler {
             if (this.game.keys.has(e.key)) {
                 this.game.keys.delete(e.key);
             }
+        });
+
+        this.game.canvas.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            initialX = e.changedTouches[0].pageX;
+        });
+
+        this.game.canvas.addEventListener('touchmove', (e) => {
+            let deltaX = e.changedTouches[0].pageX - initialX;
+            initialX = e.changedTouches[0].pageX;
+
+            if (deltaX < 0) {
+                game.keys.add('ArrowLeft');
+                game.keys.delete('ArrowRight');
+            } else if (deltaX > 0) {
+                game.keys.add('ArrowRight');
+                game.keys.delete('ArrowLeft');
+            } else {
+                game.keys.clear();
+            }
+        });
+
+        this.game.canvas.addEventListener('touchend', (e) => {
+            game.keys.clear();
         });
         
     }
