@@ -27,10 +27,12 @@ export class Asteroid extends Enemy {
     }
 
     update() {
-        super.update();
-        if (this.lives < 1) {
-            const explosion = this.game.getExplosion();
-            if (explosion) explosion.start(this.x + this.width * 0.5, this.y + this.height * 0.5);
+        if (!this.free) {
+            super.update();
+            if (this.lives < 1) {
+                const explosion = this.game.getExplosion();
+                if (explosion) explosion.start(this.x + this.width * 0.5, this.y + this.height * 0.5);
+            }
         }
     }
 }
