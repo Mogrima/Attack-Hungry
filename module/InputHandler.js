@@ -31,6 +31,7 @@ export class InputHandler {
         this.game.canvas.addEventListener('touchstart', (e) => {
             e.preventDefault();
             initialX = e.changedTouches[0].pageX;
+            this.game.player.shoot();
         });
 
         this.game.canvas.addEventListener('touchmove', (e) => {
