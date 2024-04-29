@@ -52,6 +52,18 @@ export class InputHandler {
         this.game.canvas.addEventListener('touchend', (e) => {
             game.keys.clear();
         });
+
+        this.resetButton = document.getElementById('resetButton');
+        this.resetButton.addEventListener('click', e => {
+            this.game.resize(window.innerWidth, window.innerHeight);
+            this.resetButton.blur();
+        });
+
+        this.fullScreenButton = document.getElementById('fullScreenButton');
+        this.fullScreenButton.addEventListener('click', e => {
+            this.game.toggleFullScreen();
+            this.fullScreenButton.blur();
+        });
         
     }
 }
