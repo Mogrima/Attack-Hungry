@@ -143,6 +143,15 @@ export class Game {
         this.createExplosionPool();
     }
 
+    toggleFullScreen() {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen();
+            screen.orientation.lock('landscape-primary');
+        } else if (document.exitFullscreen) {
+            document.exitFullscreen();
+        }
+    }
+
     handleSpriteTimer(deltaTime) {
         if (this.spriteTimer < this.spriteInterval) {
             this.spriteTimer += deltaTime;
