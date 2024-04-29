@@ -19,7 +19,7 @@ export class Game {
         this.height = this.canvas.height;
         this.baseHeight = 1768;
         this.baseWidth = 1768;
-        this.ratio = this.width / this.baseWidth;
+        this.ratio = this.height / this.baseHeight;
         
         this.player = new Player(this);
         this.keys = new Set();
@@ -125,7 +125,7 @@ export class Game {
         this.canvas.height = height;
         this.width = width;
         this.height = height;
-        this.ratio = this.width / this.baseWidth;
+        this.ratio = this.height / this.baseHeight;
         this.speed = 3 * this.ratio;
         this.score = 0;
         this.gameOver = false;
