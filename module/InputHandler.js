@@ -20,7 +20,9 @@ export class InputHandler {
             }
             else if (e.key === 'd') {
                 this.game.debug = !this.game.debug;
-            } 
+            } else if (e.key.toLowerCase() === 'r') {
+                this.game.resize(window.innerWidth, window.innerHeight);
+            }
         });
         window.addEventListener('keyup', (e) => {
             if (this.game.keys.has(e.key)) {
