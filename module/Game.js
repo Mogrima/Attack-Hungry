@@ -164,6 +164,7 @@ export class Game {
 
     createEnemyPool() {
         this.enemyPool = [];
+        this.asteroidPool = [];
         for (let i = 0; i < this.numberOfenemies; i++) {
             this.asteroidPool.push(new Asteroid(this));
             const randomNumber = Math.random();
