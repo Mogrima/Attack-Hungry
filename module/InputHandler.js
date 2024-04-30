@@ -18,7 +18,7 @@ export class InputHandler {
             else if (e.key === ' ') {
                 this.game.player.shoot();
             }
-            else if (e.key === 'd') {
+            else if (e.key.toLowerCase() === 'd') {
                 this.game.debug = !this.game.debug;
             } else if (e.key.toLowerCase() === 'r') {
                 this.game.resize(window.innerWidth, window.innerHeight);
