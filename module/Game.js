@@ -28,17 +28,17 @@ export class Game {
         this.space = new Space(this);
         this.direction = new Set();
 
-        this.ammo = 20;
+        this.ammo;
         this.ammoInterval = 500;
         this.maxAmmo = 50;
-        this.ammoTimer = 0;
+        this.ammoTimer;
 
-        this.hungry = 0;
+        this.hungry;
         this.hungryInterval = 1000;
         this.maxHungry = 50;
-        this.hungryTimer = 0;
+        this.hungryTimer;
 
-        this.rage = 0;
+        this.rage;
         this.maxRage = 20;
 
         this.enemyPool = [];
@@ -130,6 +130,11 @@ export class Game {
         this.score = 0;
         this.gameOver = false;
         this.gameTime = 0;
+        this.ammo = 20;
+        this.ammoTimer = 0;
+        this.hungry = 0;
+        this.hungryTimer = 0;
+        this.rage = 0;
         this.space.resize();
         this.player.resize();
         this.createEnemyPool();
