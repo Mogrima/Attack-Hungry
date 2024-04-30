@@ -34,6 +34,7 @@ export class UI {
             this.game.ctx.textAlign = 'center';
             let message1;
             let message2;
+            let message3 = 'Hungry for success press R!';
             if (this.game.isWin()) {
                 message1 = 'angry hungry!';
                 message2 = 'ⵜⵓⵜⵍⴰⵢⵜ ⵜⴰⴱⵏⴳⴰⵍⵉⵜ (বাংলা) ⵜⴻⵍⵍⴰ';
@@ -48,6 +49,8 @@ export class UI {
             this.game.ctx.font = this.smallFont + 'px ' + this.fontFamilyST;
             this.game.ctx.fillText(message2, this.game.width * 0.5,
                 this.game.height * 0.5 + (30 * this.game.ratio));
+            this.game.ctx.fillText(message3, this.game.width * 0.5,
+                this.game.height * 0.5 + (90 * this.game.ratio));
         }
 
         this.game.ctx.fillStyle = this.indicatorColor;
