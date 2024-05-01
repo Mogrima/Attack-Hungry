@@ -1,6 +1,7 @@
 export class UI {
     constructor(game) {
         this.game = game;
+        this.widthRatio = this.game.width / this.game.baseWidth;
         this.fontSize = 50 * this.game.ratio;
         this.largeFont = Math.ceil(180 * this.game.ratio);
         this.smallFont = Math.ceil(90 * this.game.ratio);
