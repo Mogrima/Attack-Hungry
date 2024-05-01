@@ -1,3 +1,39 @@
+@font-face {
+    font-family: 'Akatab';
+    src: url('fonts/Akatab-Regular.eot');
+    src: url('fonts/Akatab-Regular.eot?#iefix') format('embedded-opentype'),
+        url('fonts/Akatab-Regular.woff2') format('woff2'),
+        url('fonts/Akatab-Regular.woff') format('woff'),
+        url('fonts/Akatab-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Akatab';
+    src: url('fonts/Akatab-Medium.eot');
+    src: url('fonts/Akatab-Medium.eot?#iefix') format('embedded-opentype'),
+        url('fonts/Akatab-Medium.woff2') format('woff2'),
+        url('fonts/Akatab-Medium.woff') format('woff'),
+        url('fonts/Akatab-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Unica One';
+    src: url('fonts/UnicaOne-Regular.eot');
+    src: url('fonts/UnicaOne-Regular.eot?#iefix') format('embedded-opentype'),
+        url('fonts/UnicaOne-Regular.woff2') format('woff2'),
+        url('fonts/UnicaOne-Regular.woff') format('woff'),
+        url('fonts/UnicaOne-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 * {
     margin: 0;
     padding: 0;
