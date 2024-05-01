@@ -3,8 +3,9 @@ export class UI {
         this.game = game;
         this.widthRatio = this.game.width / this.game.baseWidth;
         this.fontSize = 50 * this.game.ratio;
-        this.largeFont = Math.ceil(180 * this.game.ratio);
-        this.smallFont = Math.ceil(90 * this.game.ratio);
+        this.largeFont = Math.ceil(90 * this.widthRatio);
+        this.mediumFont = Math.ceil(70 * this.widthRatio);
+        this.smallFont = this.mediumFont * 0.5;
         this.fontFamily = 'Unica One';
         this.fontFamilyST = 'Akatab';
         this.color = 'white';
@@ -46,12 +47,13 @@ export class UI {
             this.game.ctx.fillStyle = this.textColor;
             this.game.ctx.font = this.largeFont + 'px ' + this.fontFamily;
             this.game.ctx.fillText(message1, this.game.width * 0.5,
-                this.game.height * 0.5 - (60 * this.game.ratio));
-            this.game.ctx.font = this.smallFont + 'px ' + this.fontFamilyST;
+                this.game.height * 0.5 - (40 * this.widthRatio));
+            this.game.ctx.font = this.mediumFont + 'px ' + this.fontFamilyST;
             this.game.ctx.fillText(message2, this.game.width * 0.5,
-                this.game.height * 0.5 + (60 * this.game.ratio));
+                this.game.height * 0.5 + (40 * this.widthRatio));
+            this.game.ctx.font = this.smallFont + 'px ' + this.fontFamily;
             this.game.ctx.fillText(message3, this.game.width * 0.5,
-                this.game.height * 0.5 + (180 * this.game.ratio));
+                this.game.height * 0.5 + (100 * this.widthRatio));
         }
 
         this.game.ctx.fillStyle = this.indicatorColor;
