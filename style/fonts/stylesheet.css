@@ -1,0 +1,36 @@
+@font-face {
+    font-family: 'Akatab';
+    src: url('Akatab-Regular.eot');
+    src: url('Akatab-Regular.eot?#iefix') format('embedded-opentype'),
+        url('Akatab-Regular.woff2') format('woff2'),
+        url('Akatab-Regular.woff') format('woff'),
+        url('Akatab-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Akatab';
+    src: url('Akatab-Medium.eot');
+    src: url('Akatab-Medium.eot?#iefix') format('embedded-opentype'),
+        url('Akatab-Medium.woff2') format('woff2'),
+        url('Akatab-Medium.woff') format('woff'),
+        url('Akatab-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Unica One';
+    src: url('UnicaOne-Regular.eot');
+    src: url('UnicaOne-Regular.eot?#iefix') format('embedded-opentype'),
+        url('UnicaOne-Regular.woff2') format('woff2'),
+        url('UnicaOne-Regular.woff') format('woff'),
+        url('UnicaOne-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
