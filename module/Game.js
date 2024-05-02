@@ -29,9 +29,7 @@ export class Game {
         this.direction = new Set();
 
         this.ammo;
-        this.ammoInterval = 100;
-        this.maxAmmo = 50;
-        this.ammoTimer;
+        this.projectiles;
 
         this.hungry;
         this.hungryInterval = 1000;
@@ -82,13 +80,9 @@ export class Game {
         this.space.update();
 
         this.player.update();
-
-        if (this.ammoTimer > this.ammoInterval) {
-            if (this.ammo < this.maxAmmo) this.ammo++;
-            this.ammoTimer = 0;
-        } else {
-            this.ammoTimer += deltaTime;
-        }
+        
+        this.projectiles = this.player.projectilePool.filter(projectile => projectile.free);
+        this.ammo = this.projectiles.length;
 
         if (this.hungryTimer > this.hungryInterval && !this.gameOver) {
             if (this.hungry < this.maxHungry) {
@@ -130,8 +124,6 @@ export class Game {
         this.score = 0;
         this.gameOver = false;
         this.gameTime = 0;
-        this.ammo = 20;
-        this.ammoTimer = 0;
         this.hungry = 0;
         this.hungryTimer = 0;
         this.rage = 0;

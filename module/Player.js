@@ -66,12 +66,9 @@ export class Player {
     }
 
     shoot() {
-        if (this.game.ammo > 0) {
-            const projectile = this.getProjectile();
-            if (projectile) {
-                projectile.start(this.x + this.width * 0.5, this.y + 20);
-            }
-            this.game.ammo--;
+        const projectile = this.getProjectile();
+        if (projectile) {
+            projectile.start(this.x + this.width * 0.5, this.y + 20);
         }
     }
 
