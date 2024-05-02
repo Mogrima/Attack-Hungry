@@ -16,7 +16,7 @@ export class Player {
         this.maxSpeed;
 
         this.projectilePool = [];
-        this.projectileOfNumber = 20;
+        this.projectileOfNumber = 50;
 
         this.frameX = 0;
         this.frameY = 0;
