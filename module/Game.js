@@ -48,7 +48,7 @@ export class Game {
         this.asteroidPool = [];
         this.gameOver;
         this.score;
-        this.winningScore = 30;
+        this.winningScore = 100;
 
         this.gameTime;
         this.timeLimit = 90000;
