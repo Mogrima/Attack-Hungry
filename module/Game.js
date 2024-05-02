@@ -29,7 +29,7 @@ export class Game {
         this.direction = new Set();
 
         this.ammo;
-        this.ammoInterval = 500;
+        this.ammoInterval = 100;
         this.maxAmmo = 50;
         this.ammoTimer;
 
