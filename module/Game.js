@@ -51,7 +51,7 @@ export class Game {
         this.winningScore = 100;
 
         this.gameTime;
-        this.timeLimit = 90000;
+        this.timeLimit = 100000;
         this.speed;
         
         this.debug = true;
