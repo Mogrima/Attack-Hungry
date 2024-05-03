@@ -11,7 +11,7 @@ export class Spaceship4 extends Enemy {
 
         this.lives = 2;
         this.maxLives = this.lives;
-        this.score = this.lives;
+        this.score = this.lives * 10;
     }
 
     start() {
