@@ -58,12 +58,14 @@ export class InputHandler {
         this.resetButton = document.getElementById('resetButton');
         this.resetButton.addEventListener('click', e => {
             this.game.resize(window.innerWidth, window.innerHeight);
+            this.resetButton.focus();
             this.resetButton.blur();
         });
 
         this.fullScreenButton = document.getElementById('fullScreenButton');
         this.fullScreenButton.addEventListener('click', e => {
             this.game.toggleFullScreen();
+            this.fullScreenButton.focus();
             this.fullScreenButton.blur();
         });
         
