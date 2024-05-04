@@ -10,6 +10,7 @@ import { Space } from '../UI/Space.js';
 import { Asteroid } from './Enemies/Asteroid.js';
 import { SmokeExplosion } from './Explosion/SmokeExplosion.js';
 import { FireExplosion } from './Explosion/FireExplosion.js';
+import { Training } from './Training.js';
 
 export class Game {
     constructor(canvas, ctx) {
@@ -27,6 +28,7 @@ export class Game {
         this.ui = new UI(this);
         this.space = new Space(this);
         this.direction = new Set();
+        this.training = new Training(this);
 
         this.ammo;
         this.projectiles;
@@ -112,6 +114,7 @@ export class Game {
 
         this.explosionPool.forEach(explosion => explosion.update());
         this.smokeExplosion.update();
+        this.training.update();
     }
 
     resize(width, height) {
@@ -136,6 +139,7 @@ export class Game {
         this.asteroidPool.forEach(asteroid => {
             asteroid.resize();
         });
+        this.training.resize();
         this.createParticlePool();
         this.createExplosionPool();
     }
@@ -264,5 +268,6 @@ export class Game {
         this.enemyPool.forEach(enemy => enemy.draw());
         this.explosionPool.forEach(explosion => explosion.draw());
         this.smokeExplosion.draw();
+        this.training.draw();
     }
 }
