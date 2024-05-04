@@ -2,6 +2,17 @@ export class InputHandler {
     constructor(game) {
         this.game = game;
         let initialX;
+        function getDeviceType() {
+          const userAgent = navigator.userAgent.toLowerCase();
+          const isMobile = /mobile|iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(userAgent);
+         
+          if (isMobile) {
+            return "mobile";
+          } else {
+            return "desktop";
+          }
+        }
+        alert(getDeviceType());
         window.addEventListener('keydown', (e) => {
             if (((e.key === 'ArrowRight') || (e.key === 'ArrowLeft'))) {
                 this.game.keys.add(e.key);
