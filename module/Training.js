@@ -4,7 +4,7 @@ export class Training {
         this.widthRatio = this.game.width / this.game.baseWidth;
         this.image = document.getElementById('arrow');
         this.fontFamily = 'Unica One';
-        this.fontSize = Math.ceil(20 * this.widthRatio);
+        this.fontSize = Math.ceil(35 * this.widthRatio);
         this.spriteSize = 100;
         this.size;
         this.sizeModifier = 1.5;
