@@ -52,7 +52,7 @@ export class Game {
         this.timeLimit = 100000;
         this.speed;
         
-        this.debug = true;
+        this.debug = false;
 
         this.particlePool = [];
         this.numberOfParticle = 50;
