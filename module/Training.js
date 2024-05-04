@@ -12,6 +12,8 @@ export class Training {
         this.height = this.spriteSize;
         this.x;
         this.y;
+        this.maxX;
+        this.step;
         this.active;
     }
 
@@ -19,12 +21,15 @@ export class Training {
         this.size = (this.spriteSize * this.sizeModifier) * this.game.ratio;
         this.x = this.game.player.x + this.size;
         this.y = this.game.player.y - this.size * 0.5;
+        this.step = 200 * this.game.ratio;
+        this.maxX = this.x + this.step;
         this.active = true;
         
     }
 
     update() {
-    //    this.x += 1;
+       this.x += 1;
+       if (this.x > this.maxX) this.x -= this.step;
     }
 
     draw() {
