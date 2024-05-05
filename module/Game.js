@@ -10,7 +10,7 @@ import { Space } from '../UI/Space.js';
 import { Asteroid } from './Enemies/Asteroid.js';
 import { SmokeExplosion } from './Explosion/SmokeExplosion.js';
 import { FireExplosion } from './Explosion/FireExplosion.js';
-import { Training } from './Training.js';
+import { Training } from './Train/Training.js';
 
 export class Game {
     constructor(canvas, ctx) {
