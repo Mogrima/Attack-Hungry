@@ -11,6 +11,7 @@ import { Asteroid } from './Enemies/Asteroid.js';
 import { SmokeExplosion } from './Explosion/SmokeExplosion.js';
 import { FireExplosion } from './Explosion/FireExplosion.js';
 import { MoveRight } from './Train/MoveRight.js';
+import { MoveLeft } from './Train/MoveLeft.js';
 
 export class Game {
     constructor(canvas, ctx) {
@@ -28,7 +29,7 @@ export class Game {
         this.ui = new UI(this);
         this.space = new Space(this);
         this.direction = new Set();
-        this.training = new Set([new MoveRight(this)]);
+        this.training = new Set([new MoveRight(this), new MoveLeft(this)]);
 
         this.ammo;
         this.projectiles;
@@ -76,6 +77,7 @@ export class Game {
     }
 
     update(deltaTime) {
+        console.log(this.training)
         this.handleSpriteTimer(deltaTime);
         if (!this.gameOver) this.gameTime += deltaTime;
         if (this.gameTime > this.timeLimit) this.gameOver = true;
