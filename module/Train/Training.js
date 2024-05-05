@@ -41,7 +41,7 @@ export class Training {
       this.game.ctx.fillStyle = 'white';
       if (this.game.debug) this.game.ctx.strokeRect(this.x, this.y, this.size, this.size);
       this.game.ctx.font = this.fontSize + 'px ' + this.fontFamily;
-      this.game.ctx.fillText('Press Arrow Right to move right', this.x, this.y - 5);
+      this.game.ctx.fillText(this.message, this.x, this.y - 5);
       this.game.ctx.restore();
       this.game.ctx.drawImage(this.image,
           0, 0, this.spriteSize, this.spriteSize, 

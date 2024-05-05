@@ -4,6 +4,7 @@ export class MoveLeft extends Training {
     constructor(game) {
         super(game);
         this.image = document.getElementById('arrowInv');
+        this.message = 'Press Arrow Left to move left';
     }
 
     resize() {
