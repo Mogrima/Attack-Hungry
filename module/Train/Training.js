@@ -13,6 +13,7 @@ export class Training {
         this.y;
         this.maxX;
         this.step;
+        this.message;
     }
 
     resize() {

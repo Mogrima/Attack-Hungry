@@ -4,14 +4,14 @@ export class MoveLeft extends Training {
     constructor(game) {
         super(game);
         this.image = document.getElementById('arrowInv');
-        this.message = 'Press Arrow Left to move left';
     }
 
     resize() {
         super.resize();
         this.x = this.game.player.x - this.size;
         this.maxX = this.x - this.step;
-        
+        this.message = this.game.getDeviceType() === 'mobile' ?
+        'Swipe Left to move left' : 'Press Arrow Left to move left';
     }
 
     update() {

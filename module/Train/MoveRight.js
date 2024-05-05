@@ -4,6 +4,11 @@ export class MoveRight extends Training {
     constructor(game) {
         super(game);
         this.image = document.getElementById('arrow');
-        this.message = 'Press Arrow Right to move right';
+    }
+
+    resize() {
+        super.resize();
+        this.message = this.game.getDeviceType() === 'mobile' ?
+        'Swipe Right to move right' : 'Press Arrow Right to move right';
     }
 }
