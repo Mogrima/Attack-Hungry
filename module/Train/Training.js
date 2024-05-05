@@ -13,7 +13,6 @@ export class Training {
         this.y;
         this.maxX;
         this.step;
-        this.active;
     }
 
     resize() {
@@ -22,32 +21,31 @@ export class Training {
         this.y = this.game.player.y - this.size * 0.5;
         this.step = 200 * this.game.ratio;
         this.maxX = this.x + this.step;
-        this.active = true;
         
     }
 
+    remove() {
+      this.game.training.delete(this);
+  }
+
     update() {
-      if (this.active) {
-        this.x += 1;
-        if (this.x > this.maxX) this.x -= this.step;
-      }
-      if (this.game.keys.has('ArrowRight')) {
-        this.active = false;
-      }
+      this.x += 1;
+      if (this.x > this.maxX) this.x -= this.step;
+
+      if (this.game.keys.has('ArrowRight')) this.remove();
+
     }
 
     draw() {
-        if (this.active) {
-            this.game.ctx.save();
-            this.game.ctx.fillStyle = 'white';
-            if (this.game.debug) this.game.ctx.strokeRect(this.x, this.y, this.size, this.size);
-            this.game.ctx.font = this.fontSize + 'px ' + this.fontFamily;
-            this.game.ctx.fillText('Press Arrow Right to move right', this.x, this.y - 5);
-            this.game.ctx.restore();
-            this.game.ctx.drawImage(this.image,
-                0, 0, this.spriteSize, this.spriteSize, 
-                this.x, this.y,
-                this.size, this.size);
-        }
+      this.game.ctx.save();
+      this.game.ctx.fillStyle = 'white';
+      if (this.game.debug) this.game.ctx.strokeRect(this.x, this.y, this.size, this.size);
+      this.game.ctx.font = this.fontSize + 'px ' + this.fontFamily;
+      this.game.ctx.fillText('Press Arrow Right to move right', this.x, this.y - 5);
+      this.game.ctx.restore();
+      this.game.ctx.drawImage(this.image,
+          0, 0, this.spriteSize, this.spriteSize, 
+          this.x, this.y,
+          this.size, this.size);
     }
 }
