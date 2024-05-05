@@ -77,7 +77,6 @@ export class Game {
     }
 
     update(deltaTime) {
-        console.log(this.training)
         this.handleSpriteTimer(deltaTime);
         if (!this.gameOver) this.gameTime += deltaTime;
         if (this.gameTime > this.timeLimit) this.gameOver = true;
