@@ -14,7 +14,6 @@ export class Training {
         this.y;
         this.maxX;
         this.step;
-        this.moveRight;
         this.active;
     }
 
@@ -24,23 +23,22 @@ export class Training {
         this.y = this.game.player.y - this.size * 0.5;
         this.step = 200 * this.game.ratio;
         this.maxX = this.x + this.step;
-        this.moveRight = true;
         this.active = true;
         
     }
 
     update() {
-      if (this.moveRight) {
+      if (this.active) {
         this.x += 1;
         if (this.x > this.maxX) this.x -= this.step;
       }
       if (this.game.keys.has('ArrowRight')) {
-        this.moveRight = false;
+        this.active = false;
       }
     }
 
     draw() {
-        if (this.moveRight) {
+        if (this.active) {
             this.game.ctx.save();
             this.game.ctx.fillStyle = 'white';
             if (this.game.debug) this.game.ctx.strokeRect(this.x, this.y, this.size, this.size);
