@@ -2,7 +2,6 @@ export class Training {
     constructor(game) {
         this.game = game;
         this.widthRatio = this.game.width / this.game.baseWidth;
-        this.image = document.getElementById('arrow');
         this.fontFamily = 'Unica One';
         this.fontSize = Math.ceil(35 * this.widthRatio);
         this.spriteSize = 100;
